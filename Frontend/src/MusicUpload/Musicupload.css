@@ -1,0 +1,301 @@
+.dark-side{
+    --backgroundwhite:rgba(255, 255, 255, 0.4);
+    --backg:rgba(255, 255, 255);
+   
+   }
+   body{
+       --backgroundwhite:rgba(0,0,0,0.4);
+       --backg:rgba(0,0,0,)
+   }
+   
+   div.Music_Upload{
+       display: block;
+   }
+   div.Music_values{
+       position: fixed; 
+       z-index: 99999999999999999; 
+       padding: 20px; 
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+       margin: auto;
+       overflow: auto; 
+       background-color:var(--backg);
+       transition: all 0.1s ease-in-out;
+   }
+   div.Music_Title {
+       width: 65%;
+       margin: auto;
+       top: 0%;
+       height: auto;
+       padding-bottom: 30px;
+       justify-content: center;
+       background-color: var(--fff);
+       border-radius: 10px;
+       box-shadow: 0px 0px 4px var(--000);
+       transition: all 0.3s ease-in-out;
+       animation: musicUploadfade 2s forwards ease-in-out;
+      margin-top: 30px;
+   }
+   
+   @keyframes musicUploadfade {
+       0% {
+        opacity: 0;
+       }
+       100% {
+          opacity: 1;
+       }
+   }
+   
+   
+   @media screen and (max-width:1200px) {
+       div.Music_Title{
+           margin-bottom: 100px;
+       }
+   }
+   @media screen and (max-width:600px) {
+       div.Music_Title{
+           width: 80%;
+       }
+   }
+   @media screen and (max-width:500px) {
+       div.Music_Title{
+           width: 90%;
+       }
+   }
+   @media screen and (max-width:430px) {
+       div.Music_Title{
+           width: 95%;
+       }
+   }
+   
+   div.Close_Btn_music{
+       justify-content: flex-end;
+       display: flex;
+       padding-right: 10px;
+       padding-top: 10px;
+       right: 0;
+   }
+   button.Close_Button_Music{
+       background-color: transparent;
+       outline: none;
+       border: 1px solid var(--000);
+       font-size: 20px;
+       color: var(--000);
+       cursor: pointer;
+       padding: 1px 7px 0px 7px;
+       font-weight: 700;
+       border-radius: 5px;
+       transform: scale(0.85);
+       transition: all 0.3s ease-in-out;
+   }
+   button.Close_Button_Music:hover{
+       background-color: var(--000);
+       color: var(--fff);
+       transform: scale(1);
+   }
+   div.H_Music{
+       text-align: center;
+       margin-top: -45px;
+   }
+   #Music_Times-Fa{
+       font-weight: 700;
+   }
+   h1.Music_Name_Upload_q{
+       font-size: 30px;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       text-align: center;
+       font-weight: 600;
+       padding-top: 15px;
+       color: var(--000);
+   }
+   div.Container_Music{
+       width: 100%;
+       margin: auto;
+   }
+   div.Content_Music{
+       width: 80%;
+       margin: auto;
+   }
+   div.Inputs_Music_grid{
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      align-items: center;
+   }
+   .musicupload_Inputs{
+       position: relative;
+       margin-top: 15px;
+       margin-bottom: 5px;
+       width: 45%;
+       margin-right: 2%;
+       margin-left: 2%;
+       transition: all 0.3s ease-in-out;
+     }
+     @media screen and (max-width:1100px) {
+       .musicupload_Inputs{
+           width: 100%;
+       }
+     }
+     .Price_Song_music{
+       margin-top: 10px;
+     }
+     .musicupload_Input{
+       position: relative;
+       margin-top: 20px;
+     }
+     .musicupload_Inputs input[type='text'],
+     .musicupload_Input input[type='number']{
+       width: 100%;
+       height: auto;
+       border-radius: 6px;
+       font-size: 16px;
+       padding: 15px 10px;
+       border: 2px solid var(--000);
+       background: transparent;
+       color: var(--000);
+       outline: none;
+     }
+     @media screen and (max-width:400px) {
+       .musicupload_Inputs input[type='text'],
+     .musicupload_Input input[type='number']{
+           padding: 10px 7px;
+       }
+     }
+     .musicupload_Inputs label.Music_Upolad_L,
+     .musicupload_Input label.Music_Upolad_L{
+       position: absolute;
+       top: 50%;
+       left: 15px;
+       transform: translateY(-50%);
+       color: var(--000);
+       font-size: 17px;
+       pointer-events: none;
+       transition: 0.3s;
+     }
+     input[type='text']:hover,
+     input[type='number']:hover{
+       box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+     }
+     input[type='text']:focus,
+     input[type='number']:focus{
+       border: 2px solid #ff9700;
+       box-shadow: 0 0 5pt 2pt #D3D3D3;
+     }
+     input[type='text']:focus ~ label.Music_Upolad_L,
+     input[type='text']:valid ~ label.Music_Upolad_L,
+     input[type='number']:focus ~ label.Music_Upolad_L,
+     input[type='number']:valid ~ label.Music_Upolad_L{
+       top: 0;
+       left: 15px;
+       font-size: 16px;
+       padding: 0 2px;
+       background: var(--fff);
+       padding-left: 3px;
+       padding-right: 3px;
+     }
+     input[type=file]{
+       border: 2px solid var(--000);
+       padding: 10px 15px;
+       width: 100%;
+       border-radius: 5px;
+       background-color:var(--fff);
+       transition: all 0.3s ease-in-out;
+       color: var(--000);
+       cursor: pointer;
+     }
+   input[type=file]:hover {
+        box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+     }
+     input[type=file]:focus{
+       border: 2px solid #ff9700;
+       box-shadow: 0 0 5pt 2pt #D3D3D3;
+     }
+   .Music_Upolad_Perview_P{
+       padding-bottom: 0px;
+       color: var(--000);
+       font-size: 18px;
+   }
+   .Small_Note_Perview{
+       padding-bottom: 5px;
+   }
+   .Music_Note_Up{
+       font-size: 12px;
+       color:#ff9700 ;
+   }
+   .Song_Type{
+     width: 100%;
+     height: auto;
+     border-radius: 6px;
+     font-size: 16px;
+     padding: 10px;
+     border: 2px solid var(--000);
+     background: var(--fff);
+     color: var(--000);
+     outline: none;
+     margin-top: 5px;
+   }
+   select.Song_Type option { 
+       color: var(--000); 
+       background-color: var(--fff);
+   }
+   select.Song_Type option:hover{
+       background-color: #ff9700;
+   }
+   .Song_Type:hover{
+     box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+   }
+   .Song_Type:focus{
+     border: 2px solid #ff9700;
+     box-shadow: 0 0 5pt 2pt #D3D3D3;
+   }
+   button.Music_Upload_Data{
+       width: 100%;
+       padding: 12px;
+       outline: none;
+       color: var(--fff);
+       font-size: 18px;
+       background-color: var(--000);
+       border: 2px solid var(--000);
+       border-radius: 10px;
+       cursor: pointer;
+       transform: scale(0.85);
+       transition: all 0.3s ease-in-out;
+   }
+   @media screen and (max-width:1200px) {
+       div.Submit_Btn_Music{
+           margin-top: 10px;
+       }
+   }
+   button.Music_Upload_Data:hover{
+       width: 100%;
+       transform: scale(0.95);
+       box-shadow: 0px 0px 4px var(--000);
+   }
+   @media screen and (max-width:1342px) {
+       span.Br_Line_up{
+           display: none;
+       }
+   }
+   p.Note_Music_small{
+       color: var(--000);
+       font-size: 15px;
+   }
+   .center_IMg_upload{
+       display: flex;
+       justify-content: center;
+   }
+   .Img_preview_Music{
+       width: 73px;
+       height: 73px;
+        border-radius: 50%;
+        justify-content: center;
+   }
+   .Audio_preview_Music{
+       margin-bottom: 5px;
+   }
+   .center_IMg_upload{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   }

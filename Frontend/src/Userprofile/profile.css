@@ -1,0 +1,255 @@
+div.User_profile_id{
+    position: fixed; 
+    z-index: 99999999999999999; 
+    padding: 20px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    margin: auto;
+    overflow: auto; 
+    background-color: var(--fff);
+    transition: all 0.1s ease-in-out;
+    animation: profile 1s ease-in-out;
+  }
+  @keyframes profile {
+    0%{
+      height: 0%;
+    }
+    100%{
+      height: 100%;
+    }
+  }
+
+  div.Dark_btn{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-right: 10px;
+    align-items: center;
+  }
+  .Back_to-Home{
+    text-decoration: none;
+    color: var(--fff);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    background-color: var(--000);
+    padding: 15px 30px 14px 30px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.85);
+  }
+  @media screen and (max-width:600px) {
+    .Back_to-Home{
+      font-size: 16px;
+      padding: 10px 20px 10px 20px;
+    }
+  }
+  .Back_to-Home:hover{
+    background-color: var(--fff);
+    color: var(--000);
+    border: 2px solid var(--000);
+    transform: scale(0.90);
+  }
+  #Fa_Arrow_Left{
+    margin-right: 5px;
+  }
+
+  div.User_profile_M{
+    width: 60%;
+    margin: auto;
+    transition: all 0.3s ease-in-out;
+  }
+  @media screen and (max-width:1100px) {
+    div.User_profile_M{
+      width: 70%;
+    }
+  }
+  @media screen and (max-width:800px) {
+    div.User_profile_M{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width:600px) {
+    div.User_profile_M{
+      width: 80%;
+      margin: auto;
+      margin-top: 20px;
+    }
+  }
+  @media screen and (max-width:300px) {
+    div.User_profile_M{
+      overflow: hidden;
+    }
+  }
+  div.Upload_Img{
+    justify-content: center;
+    display: flex;
+  }
+  .fileInput {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .fileInputLabel::after {
+    content: '+';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--fff);
+    margin-left: 90px;
+    margin-top: -10px;
+    opacity: 0;
+  }
+  .fileInputLabel:hover::after{
+    opacity: 1;
+  }
+  
+img.Img_preview{
+width: 150px;
+height: 150px;
+border-radius: 50%;
+}
+img.Img_preview_Back{
+  width: 150px;
+height: 150px;
+border-radius: 50%;
+background-color: var(--000);
+}
+div.Upload_Btn_image{
+  margin-left: 200px;
+  margin-top: -50px;
+  position: relative;
+}
+div.User_Name_Id_profile{
+  margin-top: 35px;
+}
+@media screen and (max-width:600px) {
+  div.User_Name_Id_profile{
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+}
+div.User_Name_Id_profile{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 18px 30px;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width:1000px) {
+  div.User_Name_Id_profile{
+    grid-gap: 15px 20px;
+  }
+}
+@media screen and (max-width:780px) {
+  div.User_Name_Id_profile{
+    grid-gap: 10px 15px;
+  }
+}
+@media screen and (max-width:600px) {
+  div.User_Name_Id_profile{
+    grid-template-columns: auto;
+  }
+}
+p.Name_User_Profile{
+  color: var(--000);
+  font-size: 18px;
+}
+@media screen and (max-width:780px) {
+  p.Name_User_Profile{
+    font-size: 16px;
+  }
+}
+.Input_Profile{
+  width: 90%;
+  padding: 10px 15px;
+  margin-top: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid var(--000);
+}
+.Input_Profile:hover{
+  box-shadow: 0 0 8px var(--000);
+  border: 2px solid var(--fff);
+}
+.Input_Profile:focus{
+    border: 2px solid #ff9700;
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+  }
+div.Submit_Profile_btn-BTNS{
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width:600px) {
+  div.Submit_Profile_btn-BTNS{
+    justify-content: space-between;
+  }
+}
+  button.Profile_Sub_Btn{
+    width: 40%;
+     margin-top: 30px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: var(--fff);
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    background-image: linear-gradient(45deg, var(--000) 0%, var(--000)  51%, var(--fff) 100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+     transition: all 0.3s ease-in-out; 
+     font-size: 20px;
+     font-weight: 700;
+     font-family: "IM Fell Double Pica SC", serif;
+     letter-spacing: 2px;
+     transform: scale(0.95);
+    }
+  @media screen and (max-width:800px) {
+    button.Profile_Sub_Btn{
+      width: 50%;
+    }
+  }
+  @media screen and (max-width:600px) {
+    button.Profile_Sub_Btn{
+      width: 90%;
+      margin-top: 20px;
+    }
+  }
+    button.Profile_Sub_Btn:hover{
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0px 1px 8px #000;
+    text-shadow: 1px 1px 1px var(--fff);
+    transform: scale(1);
+  }
+  div.Update_MSG_Profile{
+    text-align: center;
+    display: flex;
+    justify-content:  center;
+  }
+p.Profile_Update_Message{
+  font-size: 20px;
+  color: var(--000);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--fff);
+  position: absolute;
+  box-shadow: 0 0 8px var(--000);
+  padding: 15px 60px 18px 60px;
+  border-radius: 5px;
+ text-align: center;
+}

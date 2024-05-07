@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  cursor: pointer;
+  display:flex;
+}
+.bar1,.bar3{
+font-size:20px;
+}
+.bar2,.bar4{
+font-size:15px
+}
+
+.change .bar1 {
+ font-size:15px;
+}
+
+.change .bar2 { font-size:20px;}
+
+.change .bar3 {
+  font-size:15px;
+}
+.change .bar4 { font-size:20px;}
+</style>
+</head>
+<body>
+
+<p>Click on the Menu Icon to transform it to "X":</p>
+<div class="container" onclick="myFunction(this)">
+  <div class="bar1">♪</div>
+  <div class="bar2">♪</div>
+  <div class="bar3">♪</div>
+    <div class="bar4">♪</div>
+</div>
+
+<script>
+function myFunction(x) {
+  x.classList.toggle("change");
+}
+</script>
+
+</body>
+</html>

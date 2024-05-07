@@ -1,0 +1,478 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Kdam+Thmor+Pro&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');/*  font-family: "Istok Web", sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Kdam+Thmor+Pro&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Hind+Madurai:wght@300;400;500;600;700&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Kdam+Thmor+Pro&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');/*   font-family: "Girassol", serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Hind+Madurai:wght@300;400;500;600;700&family=IM+Fell+Double+Pica+SC&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Kdam+Thmor+Pro&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');  /* font-family: "IM Fell Double Pica SC", serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Girassol&family=Hind+Madurai:wght@300;400;500;600;700&family=IM+Fell+Double+Pica+SC&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Kdam+Thmor+Pro&family=Mitr:wght@200;300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');/*  font-family: "Mitr", sans-serif;*/ 
+.dark-side{
+  --linear:linear-gradient(#272727 ,#0f0f0f,#090909); 
+    --3e3d3d:#e1d9d9;
+}
+body{
+  --linear: linear-gradient(#fff,#f5f5f5,#fffdfd) ;
+  --3e3d3d:#3e3d3d;
+} 
+div.Login_Page_Full{
+  position: fixed; 
+  z-index: 99999999999999999; 
+  padding: 20px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  margin: auto;
+  overflow: auto; 
+  background-color: var(--fff);
+  transition: all 0.1s ease-in-out;
+}
+div.Login_page{
+  position: fixed; 
+  z-index: 99999999999999999; 
+  padding: 20px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  margin: auto;
+  overflow: auto; 
+  background-image: url(Images/Login-img-transformed.png); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: Top 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+@keyframes Top {
+  0%{
+    height: 0%;
+  }
+  100%{
+    height: 100%;
+  }
+}
+
+div.Login_From{
+  width: 80%;
+  margin: auto;
+  margin-top: 80px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width:400px) {
+  div.Login_From{
+    width: 90%;
+  }
+}
+div.Login_From_Sign{
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width:400px) {
+  div.Login_From_Sign{
+    width: 90%;
+  }
+}
+
+div.Login_From_Create{
+  width: 30%;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width:1485px) {
+  div.Login_From_Create{
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+@media screen and (max-width:1450px) {
+  div.Login_From_Create{
+    width: 35%;
+  }
+}
+@media screen and (max-width:1245px) {
+  div.Login_From_Create{
+    width: 40%;
+  }
+}
+@media screen and (max-width:1145px) {
+  div.Login_From_Create{
+    width: 45%;
+  }
+}
+@media screen and (max-width:1035px) {
+  div.Login_From_Create{
+    width: 50%;
+  }
+}
+@media screen and (max-width:935px) {
+  div.Login_From_Create{
+    width: 55%;
+  }
+}
+@media screen and (max-width:835px) {
+  div.Login_From_Create{
+    width: 60%;
+  }
+}
+@media screen and (max-width:745px) {
+  div.Login_From_Create{
+    width: 65%;
+  }
+}
+@media screen and (max-width:690px) {
+  div.Login_From_Create{
+    width: 70%;
+  }
+}
+@media screen and (max-width:640px) {
+  div.Login_From_Create{
+    width: 75%;
+  }
+}
+@media screen and (max-width:600px) {
+  div.Login_From_Create{
+    width: 80%;
+  }
+}
+@media screen and (max-width:515px) {
+  div.Login_From_Create{
+    width: 90%;
+  }
+}
+@media screen and (max-width:460px) {
+  div.Login_From_Create{
+    width: 100%;
+  }
+}
+div.Dark_Btn_Logo{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 0.3s ease-in-out;
+}
+.Music_Name-Ex{
+  font-size: 30px;
+  font-family: "Girassol", serif;
+  color: #000;
+  text-decoration: none;
+  text-shadow: 0px 0px 10px #fff;
+}
+@media screen and (max-width:500px) {
+  .Music_Name-Ex{
+    box-shadow: 10px 10px 10px #fff;
+    background-color: #ffffff85;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+  }
+}
+h1.Name_Log{
+  font-size: 30px;
+  line-height: 40px;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+span.Music_Name_Ex{
+  display: block;
+  font-size: 40px;
+  margin-left: 15px;
+  font-weight: 400;
+  font-family: "Mitr", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width:1275px) {
+  span.Music_Name_Ex{
+    font-size: 35px;
+  }
+}
+@media screen and (max-width:530px) {
+  span.Music_Name_Ex{
+    font-size: 30px;
+  }
+}
+@media screen and (max-width:350px) {
+  span.Music_Name_Ex{
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:312px) {
+  span.Music_Name_Ex{
+    margin-left: 0px;
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:900px) {
+  h1.Name_Log{
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media screen and (max-width:700px) {
+  h1.Name_Log{
+    font-size: 25px;
+    line-height: 35px;
+  }
+}
+@media screen and (max-width:350px) {
+  h1.Name_Log{
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.input-field{
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .input-field input[type='text'],
+  .input-field input[type='email'],
+  .input-field input[type='password'] {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 15px;
+    border: 2px solid #000;
+    background: transparent;
+    color: #000;
+    outline: none;
+  }
+  .input-field label.Enter_Email{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #000;
+    font-size: 19px;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+  input[type='text']:hover,
+  input[type='email']:hover,
+  input[type='password']:hover{
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+  }
+  input[type='text']:focus,
+  input[type='email']:focus,
+  input[type='password']:focus{
+    border: 2px solid #ff9700;
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+  }
+  input[type='text']:focus ~ label.Enter_Email,
+  input[type='text']:valid ~ label.Enter_Email,
+  input[type='email']:focus ~ label.Enter_Email,
+  input[type='email']:valid ~ label.Enter_Email,
+  input[type='password']:focus ~ label.Enter_Email,
+  input[type='password']:valid ~ label.Enter_Email{
+    top: 0;
+    left: 15px;
+    font-size: 16px;
+    padding: 0 2px;
+    background: #fff;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  div.Password-Show{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media screen and (max-width:330px) {
+    div.Password-Show{
+      display: block;
+      text-align: center;
+    }
+    div.Show_password{
+      padding-bottom: 10px;
+    }
+  }
+  input[type='checkbox']{
+   font-size: 20px;
+   cursor: pointer;
+  }
+  label.Show_pass{
+    cursor: pointer;
+    font-size: 15px;
+    color: #000;
+    font-family: "Yantramanav", sans-serif;
+    padding-left: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  @media screen and (max-width:550px) {
+    label.Show_pass{
+      font-size: 12px;
+    }
+  }
+  .forgot_Password_user{
+    text-decoration: none;
+    color:#000;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+  }
+  @media screen and (max-width:550px) {
+    .forgot_Password_user{
+      font-size: 15px;
+    }
+  }
+  .forgot_Password_user:hover{
+    text-decoration: underline;
+  }
+  div.Submit_Button{
+    width: 60%;
+    margin: auto;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+  }
+  @media screen and (max-width:850px) {
+    div.Submit_Button{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width:350px) {
+    div.Submit_Button{
+      width: 100%;
+    }
+  }
+div.Submit_Button_Sign{
+    width: 60%;
+    margin: auto;
+    margin-top: 5px;
+    transition: all 0.3s ease-in-out;
+}
+  @media screen and (max-width:850px) {
+    div.Submit_Button_Sign{
+      width: 80%;
+    }
+  }
+  @media screen and (max-width:350px) {
+    div.Submit_Button_Sign{
+      width: 100%;
+    }
+  }
+  input[type='submit']{
+    width: 100%;
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    background-image: linear-gradient(45deg, #000 0%, #000  51%, #fff 100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+     transition: all 0.3s ease-in-out; 
+     font-size: 20px;
+     font-weight: 700;
+     font-family: "IM Fell Double Pica SC", serif;
+     letter-spacing: 2px;
+    }
+  
+  input[type='submit']:hover{
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0px 1px 8px #000;
+    text-shadow: 1px 1px 1px #fff;
+  }
+  
+  input[type='submit'] {
+    transform: scale(0.95);
+  }
+  
+  div.Hr_Line{
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  div.Hr_Line_txt{
+    text-align: center;
+    justify-content: center;
+  }
+p.Hr_Line_Er {
+  font-size: 15px;
+  color: #000;
+  position: relative;
+  overflow: hidden; 
+}
+p.Hr_Line_Er::before,
+p.Hr_Line_Er::after {
+  content: "";
+  display: inline-block;
+  border-top: 2px solid #000;
+  width: 30%;
+  overflow: hidden;
+  margin: 0 10px;
+  transform: translateY(-2px);
+}
+
+div.Sign_up-Page{
+  padding-top: 10px;
+  text-align: center;
+}
+p.Link_send{
+  font-size: 18px;
+  color: #3e3d3d;
+}
+
+/* @media screen and (max-width:450px) {
+  p.Link_send{
+    font-size: 16px;
+  }
+} */
+.Link_Sign-Up{
+  color: #002f4b;
+  text-decoration: none;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline #ff9700;
+}
+@media screen and (max-width:450px) {
+  .Link_Sign-Up{
+    display: block;
+    margin-top: 2px;
+    text-decoration: underline #ff9700;
+  }
+}
+@media screen and (max-width:350px) {
+  .Link_Sign-Up{
+    font-size: 18px;
+    display: block;
+  }
+}
+.Link_Sign-Up:hover{
+  color: #ff9700;
+  text-decoration: underline #002f4b;
+}
+
+div.Error_msg{
+  text-align: center;
+  font-size: 18px;
+}
+p.Msg_error{
+  color: #dc2323;
+}
+h1.Name_Sign_e3{
+  font-size: 40px;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width:550px) {
+  h1.Name_Sign_e3{
+    font-size: 30px;
+  } 
+}
