@@ -373,7 +373,7 @@ button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
       transform: translateY(0);
     }
     40% {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
     60% {
       transform: translateY(-5px);
