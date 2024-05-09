@@ -35,6 +35,11 @@ div.border_Cart{
   margin-left: 10px;
   margin-bottom: 10px;
 }
+@media screen and (max-width:320px) {
+  div.border_Cart{
+    overflow: scroll;
+  }
+}
 div.IMG_Cart_Flex_Len{
   display: flex;
   align-items: center;
@@ -178,6 +183,7 @@ div.Flex_Song_Cart{
     top: 0%;
     margin-right: 5px;
     margin-top: 3px;
+    z-index: 1;
   }
   button.Icon_Remove_Cart_Btn{
     border: 1px solid var(--000);
@@ -313,4 +319,23 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 color: #ff9700;
 margin-right: 2px;
 }
-
+div.Total_Price_Cart{
+  position: fixed;
+    background-color: var(--ccc);
+    width: 100%;
+    height: auto;
+    z-index: 999999999;
+    bottom: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 8px var(--box);
+}
+h2.Price_Tag_Cart{
+  color: var(--000);
+  font-size: 25px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#Rupee_Price_C{
+  font-size: 20px;
+}

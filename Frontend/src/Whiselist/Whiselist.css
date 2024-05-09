@@ -35,6 +35,11 @@ div.border_Wishlist{
   margin-left: 10px;
   margin-bottom: 10px;
 }
+@media screen and (max-width:320px) {
+  div.border_Wishlist{
+    overflow: scroll;
+  }
+}
 div.IMG_List_Flex_Len{
   display: flex;
   align-items: center;
@@ -48,6 +53,11 @@ div.Img_Wishlist{
     background-color: var(--fff);
     position: relative;
     cursor: pointer;
+}
+@media screen and (max-width:320px) {
+  div.Img_Wishlist{
+    overflow: scroll;
+  }
 }
 div.Img_Wishlist:hover{
     transform: scale(1.15);
@@ -178,6 +188,7 @@ div.Flex_Song_wishlist{
     top: 0%;
     margin-right: 5px;
     margin-top: 3px;
+    z-index: 1;
   }
   button.Icon_Remove_Wish_Btn{
     border: 1px solid var(--000);
@@ -377,5 +388,45 @@ button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
     }
     60% {
       transform: translateY(-5px);
+    }
+  }
+  div.Cart_Wish_o{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  button.Add_Cart_Btn_Cc{
+    justify-content: center;
+    align-items: center;
+    background-color: var(--000);
+    color: var(--fff);
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  button.Add_Cart_Btn_Cc:hover{
+    background-color: var(--fff);
+    color: var(--000);
+    transform: scale(1.2);
+    border: 1px solid var(--000);
+  }
+  #Cart-Fa_Shop-Cart{
+    margin-right: 5px;
+  }
+  button.Add_Cart_Btn_Cc:hover #Cart-Fa_Shop-Cart{
+    animation: wcar 1.5s linear;
+  }
+  @keyframes wcar {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translatex(-10px);
+    }
+    60% {
+      transform: translatex(-5px);
     }
   }

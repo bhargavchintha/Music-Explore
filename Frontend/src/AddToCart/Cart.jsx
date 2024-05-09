@@ -263,7 +263,6 @@ const Cart = () => {
                                   </>
                                 )}
                               </div>
-
                     </>
                   ) )
                  ):(
@@ -296,7 +295,15 @@ const Cart = () => {
               </div>
           </div>
       </div>
-
+   {isLoggedIn &&(<>
+   <div className='Total_Price_Cart'>
+      <div className='Total_Cart'>
+          <div className='Total_Shop_Cart'>
+                 <h2 className='Price_Tag_Cart' >Total Price:  <i id="Rupee_Price_C" className='fa fa-rupee'></i> {Cartsongs.reduce((total, Cart) => total + parseFloat(Cart.songprice), 0)}</h2>
+           </div>
+      </div>
+    </div>
+   </>)}
       
       {currentSongIndex !== null && (
             <div className='Song_Player'>

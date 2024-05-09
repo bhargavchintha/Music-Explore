@@ -246,8 +246,7 @@ const Wishlist = () => {
                                               <h3 className='song_Des_Label_Acc' title={wishlist.songdescription}>
                                                 <span className='Label_Song_Acc' title='Song Description'>
                                                   Song Description:
-                                                </span>
-                                                {wishlist.songdescription}
+                                                </span> {wishlist.songdescription}
                                               </h3>
                                             </div>
                                             <div className='Song_Name_Paly'>
@@ -288,6 +287,26 @@ const Wishlist = () => {
                                                 &nbsp;<i id='Fa_Rupee_Acc' className='fa fa-rupee'></i>
                                                  {wishlist.songprice}
                                               </h3>
+                                            </div>
+                                            <div className='Cart_Wish_o'>
+                                               <div className='Cart_Wish_List_Shop'>
+                                                  <div className='Add_Cart_Pro_Btn'>
+                                                      <button className='Add_Cart_Btn_Cc' onClick={(e) => {e.stopPropagation();
+                                                            const wishlist = wishlistsongs[index]; // Get the selected song from Homesongs array
+                                                            addToCart(
+                                                              user.id, 
+                                                              wishlist.songname, 
+                                                              wishlist.songdescription, 
+                                                              wishlist.songlicence, 
+                                                              wishlist.songprice, 
+                                                              wishlist.songimage, 
+                                                              wishlist.songpreview, 
+                                                              wishlist.songoriginal
+                                                            );
+                                                          }} title='Add To Cart' 
+                                                        ><i id="Cart-Fa_Shop-Cart" className='fa fa-shopping-cart'></i>Add To Cart</button>
+                                                    </div>
+                                               </div>
                                             </div>
                                           </div>
                                         </div>
