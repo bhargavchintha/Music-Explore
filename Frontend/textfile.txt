@@ -1,1 +1,35 @@
 Accordion css written iin home.css from  238 line 
+
+and here 
+{isLoggedIn && (<>
+                   <div className='No_Data_wish'>
+                     <div className='Not_found'>
+                         <h2 className='Search_Data'>
+                          Add  some songs to your Wishlist!
+                         </h2>
+                         <p className='Click_Here'>
+                          <Link to='/Home'>Home</Link>
+                         </p>
+                     </div>
+                   </div>
+                 </>)}  
+                 {!isLoggedIn && (
+                  <div className='Logout_Wishlist'>
+                     <div className='Text_logOut'>
+                      <h1 className='text_log_Session'>Login/signup to add item in Your <i id="Session_Log_Heart" className='fa fa-shopping-cart'></i> Cart </h1>
+                       <Link className="Login_Session_Wish" to= '/Login'><button className='Btn_session_Log' >Login</button></Link>
+                       <Link className="Login_Session_Wish" to= '/Signup'><button className='Btn_session_Sig' >Signup</button></Link>
+                     </div>
+                  </div>
+                 )}
+                  </>
+                 )
+                 
+                }
+              </div>
+          </div>
+      </div> 
+      this css in Wishlist.css
+
+
+      

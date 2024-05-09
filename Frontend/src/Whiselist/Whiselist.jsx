@@ -310,7 +310,7 @@ const Wishlist = () => {
                           Add  some songs to your Wishlist!
                          </h2>
                          <p className='Click_Here'>
-                          <Link to='/Home'>Home</Link>
+                          <Link className="Home_Click" to='/Home'>Home</Link>
                          </p>
                      </div>
                    </div>

@@ -35,7 +35,7 @@ div.border_Cart{
   margin-left: 10px;
   margin-bottom: 10px;
 }
-div.IMG_List_Flex_Len{
+div.IMG_Cart_Flex_Len{
   display: flex;
   align-items: center;
 }
@@ -68,17 +68,17 @@ div.Img_Cart:hover p.Des_Wishlist{
 div.Img_Cart:hover p.price_Wishlist{
     color: var(--fff);
 } */
-img.Img_Wishlist_width{
+img.Img_Cart_width{
   width: 120px;
   height: 120px;
   border-radius: 5px;
 }
-div.Width_Max-Wish{
+div.Width_Max-Cart{
     width: 120px;
     height: 120px;
 }
 
-div.Flex_Song_wishlist{
+div.Flex_Song_Cart{
     background-color: #7ee8fa;
     border: 1px solid var(--ccc);
     background-image: linear-gradient(45deg, #7ee8fa 25%, #80ff72 70% );
@@ -88,7 +88,7 @@ div.Flex_Song_wishlist{
     position: relative;
     margin-bottom: 5px;
  }
- div.Song_wish_Name{
+ div.Song_cart_Name{
  display: flex; 
  justify-content: center; 
  align-items: center; 
@@ -96,24 +96,24 @@ div.Flex_Song_wishlist{
  height: 100%;
  overflow: hidden;
  }
- h1.wish_Song{
+ h1.Cart_Song{
     font-size: 20px;
     font-weight: 600;
     color: var(--000);
  }
 
- div.Name_Contant_wish{
+ div.Name_Contant_cart{
     margin-left: 10px;
  }
- h3.name_List{
+ h3.name_List_Cart{
     font-size: 20px;
     font-weight: 600;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-bottom: 5px;
     color: var(--000);
  }
- p.Des_Wishlist,
- p.price_Wishlist{
+ p.Des_cart,
+ p.price_cart{
     padding-bottom: 5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
@@ -210,13 +210,13 @@ div.Flex_Song_wishlist{
     color: var(--fff);
     border: 1px solid var(--fff);
   }
-#Fa_Remove_wish_btn{
+#Fa_Remove_Cart_btn{
   font-size: 15px;
   color: red;
   font-weight: 800;
   margin-right: 3px;
 }
-button.Icon_Remove_Cart_Btn:hover #Fa_Remove_wish_btn {
+button.Icon_Remove_Cart_Btn:hover #Fa_Remove_Cart_btn {
   animation: bouncewish 1s linear;
 }
 
@@ -297,5 +297,20 @@ button.Icon_Remove_Cart_Btn:hover #Fa_Remove_wish_btn {
     border: 1px solid var(--000);
     text-decoration: underline;
   }
-
+  div.Note_msg{
+    margin-top: 15px;
+    text-align: center;
+  }
+p.Msg-Cart{
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: var(--000);
+}
+span.Span_Note{
+font-size: 20px;
+font-weight: 600;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+color: #ff9700;
+margin-right: 2px;
+}
 

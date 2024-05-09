@@ -150,41 +150,37 @@ const Cart = () => {
                                                 Cart.songprice,
                                               );  e.stopPropagation();
                                           }} >
-                                        <i id="Fa_Remove_wish_btn" class="fa fa-remove"></i>
+                                        <i id="Fa_Remove_Cart_btn" class="fa fa-remove"></i>
                                      </button>
                                 </div>
-                            <div className='IMG_List_Flex_Len'>
+                            <div className='IMG_Cart_Flex_Len'>
                               <div className='Image_Container_List'>
                                 {Cart.songimage  ? (
                                   <>
                                   <div className='Image_Content_Wish'>
-                                      <img className='Img_Wishlist_width' src={`songfilesupload/images/${Cart.songimage}`} title={Cart.songname} />
+                                      <img className='Img_Cart_width' src={`songfilesupload/images/${Cart.songimage}`} title={Cart.songname} />
                                   </div>
                                   </>
                                 ):(
                                   <>
-                                  <div className='Width_Max-Wish'>
-                                    <div className='Flex_Song_wishlist' title={Cart.songname} >
-                                      <div className='Song_wish_Name'>
-                                        <h1 className='wish_Song'>{Cart.songname && Cart.songname.length > 9 ? `${Cart.songname.slice(0, 9)}` : Cart.songname}</h1>
+                                  <div className='Width_Max-Cart'>
+                                    <div className='Flex_Song_Cart' title={Cart.songname} >
+                                      <div className='Song_cart_Name'>
+                                        <h1 className='Cart_Song'>{Cart.songname && Cart.songname.length > 9 ? `${Cart.songname.slice(0, 9)}` : Cart.songname}</h1>
                                       </div>
                                     </div>
                                   </div>
                                   </>
                                 )}
                               </div>
-                              <div className='Name_Contant_wish'>
+                              <div className='Name_Contant_cart'>
                                 <div className='Name-Container_Wish'>
-                                  <h3 className='name_List' title={`Name: ${Cart.songname}`} >{Cart.songname && Cart.songname.length > 9 ? `${Cart.songname.slice(0, 9)}...` : Cart.songname}</h3>
-                                  <p className='Des_Wishlist' title={`Description: ${Cart.songdescription} `} >{Cart.songdescription && Cart.songdescription.length > 15 ? `${Cart.songdescription.slice(0, 15)}...` : Cart.songdescription}</p>
-                                  <p className='price_Wishlist' title={`Item price : ${Cart.songprice}`} ><i id="Price_Wish_Rup" className='fa fa-rupee'></i>{Cart.songprice}</p>
+                                  <h3 className='name_List_Cart' title={`Name: ${Cart.songname}`} >{Cart.songname && Cart.songname.length > 9 ? `${Cart.songname.slice(0, 9)}...` : Cart.songname}</h3>
+                                  <p className='Des_cart' title={`Description: ${Cart.songdescription} `} >{Cart.songdescription && Cart.songdescription.length > 15 ? `${Cart.songdescription.slice(0, 15)}...` : Cart.songdescription}</p>
+                                  <p className='price_cart' title={`Item price : ${Cart.songprice}`} ><i id="Price_Wish_Rup" className='fa fa-rupee'></i>{Cart.songprice}</p>
                                 </div>
-                                <div className='Add_Cart_Wish'>
-                                  <div className='Add_Cart_Page_List'>
-                                      {/* <button>Add Cart</button> */}
-                                      
-                                  </div>
-                                </div>
+
+                                
                               </div>
                             </div>
                          </div>
@@ -253,6 +249,11 @@ const Cart = () => {
                                                  {Cart.songprice}
                                               </h3>
                                             </div>
+                                            <div className='Note_msg'>
+                                               <div className='Note_Msg_Cart'>
+                                                <p className='Msg-Cart' ><span className='Span_Note' >Note:</span>Here, with this, you will get one file, and in that file, only songs will be there.</p>
+                                               </div>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
@@ -271,10 +272,10 @@ const Cart = () => {
                    <div className='No_Data_wish'>
                      <div className='Not_found'>
                          <h2 className='Search_Data'>
-                          Add  some songs to your Wishlist!
+                          Add  some songs to your Cart!
                          </h2>
                          <p className='Click_Here'>
-                          <Link to='/Home'>Home</Link>
+                          <Link className="Home_Click" to='/Home'>Home</Link>
                          </p>
                      </div>
                    </div>

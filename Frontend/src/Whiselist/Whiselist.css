@@ -336,5 +336,29 @@ button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
       transform: translatex(-5px);
     }
   }
+  div.No_Data_wish{
+    text-align: center; 
+  }
+  h2.Search_Data{
+    margin-bottom: 20px;
+  }
+  .Home_Click{
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--000);
+    text-decoration: none;
+    color: var(--000);
+    background-color: var(--fff);
+    transition: all 0.3s ease-in-out;
+  }
+  .Home_Click:hover{
+    background-color: var(--000);
+    color: var(--fff);
+    text-decoration: underline;
+    transform: scale(1.2);
+  }
+
   
 
