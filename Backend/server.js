@@ -650,7 +650,7 @@ app.post('/Add-To-Cart', (req, res) => {
 USAGE : if user add the to Cart and it will show the data in Cart
 URL :   http://localhost:3030/Cart-songs
 Method : get
-wishlistsongs Endpoint
+Cart-songs Endpoint
 */
 
 app.get('/Cart-songs', (req, res) => {
