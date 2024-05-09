@@ -121,22 +121,22 @@ const Cart = () => {
   return (
     <>
     <title>Wishlist Page | Music Explore </title>
-      <div className='Cart_Song_List'>
-         <div className='Cart_Title_Songs'>
+      <div className='Whislist_Song_List'>
+         <div className='Wishlist_Title_Songs'>
                 <div className='Error_Success_Msg'>
                   <div className='Error_Msg_Call'>
                       {addDeleteToCartError && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addDeleteToCartError}</span></h1></div>}
                       {addDeleteToCartSuccess && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addDeleteToCartSuccess}</span></h1></div>}
                   </div>
                 </div>
-              <div className='Your_Cart_Names'>
+              <div className='Your_Whihlist_Names'>
                  {Cartsongs.length > 0 ? (
                   Cartsongs.map((Cart,index) =>(
                     <>
-                      <div className='border_Cart'  onClick={() => toggleAccordion(index)} >
-                         <div className='Img_Cart'>
-                            <div className='Cart_Btn_List_Btns'>
-                                  <button className='Icon_Remove_Cart_Btn' title='Remove From Cart' 
+                      <div className='border_Wishlist'  onClick={() => toggleAccordion(index)} >
+                         <div className='Img_Wishlist'>
+                            <div className='Wish_Btn_List_Btns'>
+                                  <button className='Icon_Remove_Wish_Btn' title='Remove From Whiselist' 
                                         onClick={(e) => {
                                             const Cart = Cartsongs[index]; // Get the selected song from Homesongs array
                                             songaddToCart(

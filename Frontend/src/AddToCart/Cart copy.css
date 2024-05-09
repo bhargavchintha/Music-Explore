@@ -1,36 +1,36 @@
-div.Cart_Song_List{
+div.Whislist_Song_List{
     width: 100%;
     margin: auto;
 }
-div.Cart_Title_Songs{
+div.Wishlist_Title_Songs{
     padding-top: 80px;
     margin-left: 27.5%;
     transition: all 0.3s ease-in-out;
 }
 @media screen and (max-width:1000px) {
-  div.Cart_Title_Songs{
+  div.Wishlist_Title_Songs{
     margin-left: 0px;
   }
 }
-div.Your_Cart_Names{
+div.Your_Whihlist_Names{
     display: flex;
     flex-wrap: wrap;
     transition: all 0.3s ease-in-out;
 }
 @media screen and (max-width:1000px) {
-  div.Your_Cart_Names{
+  div.Your_Whihlist_Names{
     width: 80%;
     margin: auto;
     justify-content: center;
   }
 }
 @media screen and (max-width:800px) {
-  div.Your_Cart_Names{
+  div.Your_Whihlist_Names{
     width: 90%;
     margin: auto;
   }
 }
-div.border_Cart{
+div.border_Wishlist{
   width: 300px;
   margin-left: 10px;
   margin-bottom: 10px;
@@ -39,7 +39,7 @@ div.IMG_List_Flex_Len{
   display: flex;
   align-items: center;
 }
-div.Img_Cart{
+div.Img_Wishlist{
     border: 1px solid var(--ccc);
     width: 100%;
     padding: 10px 10px;
@@ -49,23 +49,23 @@ div.Img_Cart{
     position: relative;
     cursor: pointer;
 }
-div.Img_Cart:hover{
+div.Img_Wishlist:hover{
     transform: scale(1.15);
     z-index: 999;
     box-shadow: 0 0 8px var(--ccc);
 }
-/*div.Img_Cart:hover{
+/*div.Img_Wishlist:hover{
     transform: scale(1.16);
     z-index: 999;
     background-color: var(--000);
 }
- div.Img_Cart:hover h3.name_List{
+ div.Img_Wishlist:hover h3.name_List{
     color: var(--fff);
 }
-div.Img_Cart:hover p.Des_Wishlist{
+div.Img_Wishlist:hover p.Des_Wishlist{
     color: var(--fff);
 }
-div.Img_Cart:hover p.price_Wishlist{
+div.Img_Wishlist:hover p.price_Wishlist{
     color: var(--fff);
 } */
 img.Img_Wishlist_width{
@@ -172,14 +172,14 @@ div.Flex_Song_wishlist{
       width: 0%; 
     }
   }
-  div.Cart_Btn_List_Btns{
+  div.Wish_Btn_List_Btns{
     position: absolute;
     right: 0%;
     top: 0%;
     margin-right: 5px;
     margin-top: 3px;
   }
-  button.Icon_Remove_Cart_Btn{
+  button.Icon_Remove_Wish_Btn{
     border: 1px solid var(--000);
     outline: none;
     background-color: var(--fff);
@@ -204,7 +204,7 @@ div.Flex_Song_wishlist{
         background-color: #80ff72;
     }
   }
-  button.Icon_Remove_Cart_Btn:hover{
+  button.Icon_Remove_Wish_Btn:hover{
     transform: scale(1.2);
     background-color: var(--000);
     color: var(--fff);
@@ -216,7 +216,7 @@ div.Flex_Song_wishlist{
   font-weight: 800;
   margin-right: 3px;
 }
-button.Icon_Remove_Cart_Btn:hover #Fa_Remove_wish_btn {
+button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
   animation: bouncewish 1s linear;
 }
 
