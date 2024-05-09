@@ -323,9 +323,9 @@ button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
     margin-right: 5px;
   }
   button.Add_Cart_Btn_Prog:hover #Cart-Fa_Shop{
-    animation: leftBoun 1.5s linear;
+    animation: leftBounCartwish 1.5s linear;
   }
-  @keyframes leftBoun {
+  @keyframes leftBounCartwish {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
@@ -340,25 +340,42 @@ button.Icon_Remove_Wish_Btn:hover #Fa_Remove_wish_btn {
     text-align: center; 
   }
   h2.Search_Data{
-    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
   }
-  .Home_Click{
-    margin-top: 20px;
+  button.Name_Btn_Home{
+    margin-top: 10px;
     font-size: 18px;
     padding: 8px 15px;
     border-radius: 5px;
     border: 1px solid var(--000);
     text-decoration: none;
-    color: var(--000);
-    background-color: var(--fff);
-    transition: all 0.3s ease-in-out;
-  }
-  .Home_Click:hover{
     background-color: var(--000);
     color: var(--fff);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  button.Name_Btn_Home:hover{
+    color: var(--000);
+    background-color: var(--fff);
     text-decoration: underline;
     transform: scale(1.2);
   }
 
-  
-
+  #Cart_Wish_home{
+    margin-right: 3px;
+  }
+  button.Name_Btn_Home:hover #Cart_Wish_home{
+  animation: leftcartwishho 1.5s linear;
+  }
+  @keyframes leftcartwishho {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
