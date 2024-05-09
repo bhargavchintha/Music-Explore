@@ -121,7 +121,7 @@ const Cart = () => {
   return (
     <>
     <title>Wishlist Page | Music Explore </title>
-      <div className='Whislist_Song_List'>
+      <div className='Cart_Song_List'>
          <div className='Wishlist_Title_Songs'>
                 <div className='Error_Success_Msg'>
                   <div className='Error_Msg_Call'>
