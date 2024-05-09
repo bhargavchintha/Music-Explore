@@ -194,11 +194,16 @@ const handleLogout = () => {
               <div className='Head_Card'>
                    <div className='Whiselist_Cart_List'>
                        <div className='Whiselist_Btn_Head'>
-                          <Link to="/Whiselist" title="Whiselist" > <i id="Whiselist_Heart" className='fa fa-heart-o'></i> </Link>
+                          <Link className="Whiselist-Heart_List" to="/Whiselist" title="Whiselist" > <i id="Whiselist_Heart" className='fa fa-heart-o'></i> </Link>
                        </div>
                        <div className='Cart_Btn_Head'>
 
                        </div>
+                   </div>
+                   <div className='Cart_List'>
+                      <div className='Cart_List_Page'>
+                        <Link className="Cart_Details_List" to="/Cart" title="Cart"><i className='fa fa-shopping-cart'></i></Link>
+                      </div>
                    </div>
                  <div className='Head_card_details'>
                      <div onClick={toggleVisibility} className='Head_Profile'>
@@ -244,12 +249,14 @@ const handleLogout = () => {
               <div className='Sign_up-Login'>
                     <div className='Whiselist_Cart_List'>
                           <div className='Whiselist_Btn_Head'>
-                              <Link to="/Whiselist" title="Whiselist" > <i id="Whiselist_Heart" className='fa fa-heart-o'></i> </Link>
-                          </div>
-                          <div className='Cart_Btn_Head'>
-
+                              <Link className="Whiselist-Heart_List" to="/Whiselist" title="Whiselist" > <i id="Whiselist_Heart" className='fa fa-heart-o'></i> </Link>
                           </div>
                      </div>
+                     <div className='Cart_Btn_Head'>
+                             <div className='Cart_Btn_Head'>
+                                <Link className="Cart_List_Shop" to="/Cart" title="Cart" > <i id="Cart_Shopping" className='fa fa-shopping-cart'></i> </Link>
+                            </div>
+                          </div>
                   <div className='Nav_Bar_sign'>
                       <Link className="Sign_Login   SignUp" to="/Signup">Sign up</Link>
                   </div>
@@ -346,8 +353,20 @@ const handleLogout = () => {
                               <i id="Fa_Home_profile" className="fa fa-user" aria-hidden="true">
                                 </i> Profile</Link>
                          </div>
+                         <div className='wish_List_Bl'>
+                            <Link className="Wish_List_Click" onClick={handleCloseMenu} to="/Whiselist">
+                              <i id="Hear_Wish-o" className='fa fa-heart-o'></i>
+                               Wishlist
+                            </Link>
+                         </div>
+                         <div className='Cart_List_Bl'>
+                            <Link className="Cart_List_Click" onClick={handleCloseMenu} to="/Cart">
+                              <i id="Shop_Cart_O" className='fa fa-shopping-cart'></i>
+                               Cart
+                            </Link>
+                         </div>
                         <div className='Log-OuT_DE'>
-                            <button className='Logout_Btn LO_BN' onClick={handleLogout}> <i id="Fa_Sign_Out_Profile" className="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
+                            <button className='Logout_Btn LO_BN'  onClick ={() =>{ handleLogout(); handleCloseMenu();  }} > <i id="Fa_Sign_Out_Profile" className="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
                         </div>
                         
                         </>

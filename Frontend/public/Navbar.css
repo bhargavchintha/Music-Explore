@@ -875,13 +875,116 @@ display: none;
 }
 }
 div.Whiselist_Btn_Head{
-  margin-right: 20px;
+  margin-right: 10px;
+}
+div.Cart_Btn_Head{
+  margin-right: 5px;
+}
+.Whiselist-Heart_List:hover #Whiselist_Heart{
+  animation: wishlistH 1.5s ease-in-out;
+}
+@keyframes wishlistH {
+  0%, 20%, 50%, 80%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.1);
+  }
 }
 #Whiselist_Heart{
   font-size: 25px;
   color: #e91e63;
   font-weight: 800;
 }
+.Cart_List_Shop{
+  text-decoration: none;
+ color:  #dc3545;
+ font-size: 25px;
+}
+div.Cart_List{
+margin-right: 15px;
+}
+.Cart_Details_List{
+ text-decoration: none;
+ color:  #dc3545;
+ font-size: 25px;
+}
+div.wish_List_Bl,
+div.Cart_List_Bl{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Wish_List_Click,
+.Cart_List_Click{
+  text-decoration: none;
+  position: relative;
+  color: var(--000);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease-in-out;
+  font-size: 22px;
+}
+.Wish_List_Click:hover,
+.Cart_List_Click:hover{
+  padding-left: 10px;
+}
+#Hear_Wish-o{
+  margin-right: 5px;
+  color: #e91e63;
+  font-weight: 700;
+}
+#Shop_Cart_O{
+  margin-right: 5px;
+  color: #dc3545;
+}
+.Wish_List_Click:hover #Hear_Wish-o {
+  animation: bouncewishcart 1.5s ease-in-out;
+}
+
+@keyframes bouncewishcart {
+  0%, 20%, 50%, 80%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+}
+.Cart_List_Click:hover #Shop_Cart_O{
+  animation: leftBouncart 1.5s ease-in-out;
+}
+@keyframes leftBouncart {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translatex(-10px);
+  }
+  60% {
+    transform: translatex(-5px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .Search{
   padding-top: 100px;
   margin-left: 30%;

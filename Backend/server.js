@@ -531,6 +531,76 @@ app.post('/Add-To-Wishlist', (req, res) => {
   });
 });
 
+
+
+/*
+USAGE : if user add the to wishlist and it will show the data in wishlist
+URL :   http://localhost:3030/wishlistsongs
+Method : get
+wishlistsongs Endpoint
+*/
+
+app.get('/wishlistsongs', (req, res) => {
+  if (!req.session.user || !req.session.user.id) {
+    return res.status(401).json({ error: 'User session not found or missing user id' });
+  }
+  const userId = req.session.user.id; 
+  //console.log(userId);
+
+  // SQL query to fetch songs associated with the logged-in user
+  const sql = `
+    SELECT *
+    FROM wishlist
+    WHERE id = ?
+  `;
+
+  // Execute the SQL query
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+    //  console.log(sql);
+    //  console.log(userId);
+      //console.log(result);
+      console.error('Error retrieving songs from database:', err);
+      return res.status(500).json({ error: 'An error occurred while retrieving songs' });
+    }
+  //  console.log(sql);
+   // console.log(userId);
+    //console.log(result);
+    res.status(200).json(result);
+  });
+});
+
+
+
+/*
+USAGE : it will delete the song in wishlist
+URL :   http://localhost:3030/deletewishlist
+Method : post
+deletewishlist Endpoint
+*/
+
+app.post('/deletewishlist', (req, res) => {
+  const { id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice, } = req.body;
+  
+  const query = `DELETE FROM wishlist WHERE id = ?  AND songname = ? AND songdescription = ?  AND songimage = ? AND songpreview = ? AND songoriginal = ?  AND songlicence = ?  AND songprice = ?`;
+
+  db.query(query, [id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice], (err, result) => {
+    if (err) {
+      console.error('Error deleting song from wishlist:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+
+    if (result.affectedRows === 0) {
+      console.log('Song is not in the wishlist');
+      return res.status(404).json({ error: 'Song is not in the wishlist' });
+    }
+
+    console.log('Song deleted from wishlist');
+    res.json({ success: true });
+  });
+});
+
+
 /*
 USAGE : To store song in  cart page which user likes 
 URL :   http://localhost:3030/Add-To-Cart
@@ -576,15 +646,14 @@ app.post('/Add-To-Cart', (req, res) => {
   });
 });
 
-
 /*
-USAGE : if user add the to wishlist and it will show the data in wishlist
-URL :   http://localhost:3030/wishlistsongs
+USAGE : if user add the to Cart and it will show the data in Cart
+URL :   http://localhost:3030/Cart-songs
 Method : get
 wishlistsongs Endpoint
 */
 
-app.get('/wishlistsongs', (req, res) => {
+app.get('/Cart-songs', (req, res) => {
   if (!req.session.user || !req.session.user.id) {
     return res.status(401).json({ error: 'User session not found or missing user id' });
   }
@@ -594,7 +663,7 @@ app.get('/wishlistsongs', (req, res) => {
   // SQL query to fetch songs associated with the logged-in user
   const sql = `
     SELECT *
-    FROM wishlist
+    FROM cart
     WHERE id = ?
   `;
 
@@ -614,17 +683,18 @@ app.get('/wishlistsongs', (req, res) => {
   });
 });
 
+
 /*
-USAGE : it will delete the song in wishlist
-URL :   http://localhost:3030/deletewishlist
+USAGE : it will delete the song in Cart
+URL :   http://localhost:3030/Delete-Cart-song
 Method : post
-deletewishlist Endpoint
+Delete-Cart-song Endpoint
 */
 
-app.post('/deletewishlist', (req, res) => {
+app.post('/Delete-Cart-song', (req, res) => {
   const { id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice, } = req.body;
   
-  const query = `DELETE FROM wishlist WHERE id = ?  AND songname = ? AND songdescription = ?  AND songimage = ? AND songpreview = ? AND songoriginal = ?  AND songlicence = ?  AND songprice = ?`;
+  const query = `DELETE FROM cart WHERE id = ?  AND songname = ? AND songdescription = ?  AND songimage = ? AND songpreview = ? AND songoriginal = ?  AND songlicence = ?  AND songprice = ?`;
 
   db.query(query, [id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice], (err, result) => {
     if (err) {
@@ -633,11 +703,11 @@ app.post('/deletewishlist', (req, res) => {
     }
 
     if (result.affectedRows === 0) {
-      console.log('Song is not in the wishlist');
-      return res.status(404).json({ error: 'Song is not in the wishlist' });
+      console.log('Song is not in the Cart');
+      return res.status(404).json({ error: 'Song is not in the Cart' });
     }
 
-    console.log('Song deleted from wishlist');
+    console.log('Song deleted from Cart');
     res.json({ success: true });
   });
 });

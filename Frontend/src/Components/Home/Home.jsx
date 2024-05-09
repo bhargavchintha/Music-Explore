@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useHistory } from 'react-router-dom';
+import {useHistory,Link } from 'react-router-dom';
 import axios from 'axios';
 import './home.css';
 
@@ -125,8 +125,8 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
           songoriginal 
         });
        // console.log('Song added to Cart:', response.data);
-       setAddToCartSuccess(`${songname} Song added to Cart`);
-     //  history.push('/Cart');
+       //setAddToCartSuccess(`${songname} Song added to Cart`);
+        history.push('/Cart');
         
       } catch (error) {
         if (error.response && error.response.status === 400) {
@@ -144,11 +144,12 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
     const timer = setTimeout(() => {
       setAddToWishlistError('');
       setAddToWishlistSuccess('');
-    }, 2000); 
+      setAddToCartError('');
+      setAddToCartSuccess('');
+    }, 1300); 
 
     return () => clearTimeout(timer);
-  }, [addToWishlistError, addToWishlistSuccess]);
-
+  }, [addToWishlistError, addToWishlistSuccess, addToCartError, addToCartSuccess]);
   
 
   return (
@@ -158,8 +159,10 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
       <div className='container_Home'>
         <div className='Error_Success_Msg'>
            <div className='Error_Msg_Call'>
-              {addToWishlistError && <div className="error_message"><h1 className='Error_Msg'><span className='Error_Success'>{addToWishlistError}</span></h1></div>}
-              {addToWishlistSuccess && <div className="error_message"><h1 className='Error_Msg'><span className='Error_Success'>{addToWishlistSuccess}</span></h1></div>}
+           {addToWishlistError && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToWishlistError}</span></h1></div>}
+                      {addToWishlistSuccess && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToWishlistSuccess}</span></h1></div>}
+                      {addToCartError && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToCartError}</span></h1></div>}
+                      {addToCartSuccess && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToCartSuccess}</span></h1></div>}
            </div>
         </div>
         <div className='Home_Page_Songs'>
@@ -205,7 +208,7 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
                     ) : (
                       <div className='Flex_Song_View' title={song.songname} >
                         <div className='Song_View_Name'>
-                              <h1 className='N_Song'>{song.songname && song.songname.length > 10 ? `${song.songname.slice(0, 10)}...` : song.songname}</h1>
+                              <h1 className='N_Song'>{song.songname && song.songname.length > 10 ? `${song.songname.slice(0, 10)}` : song.songname}</h1>
                         </div>
                       </div>
                     )}
@@ -317,15 +320,39 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
                                                             );
                                                           }}
                                                           >
-                                                          <i id="WhiseList_Song" className="fa fa-heart-o"></i>
+                                                          <i id="WhiseList_Song-sh" className="fa fa-heart-o"></i>
                                                           <span className='Add_To_List_Acc' >Add To Whiselist</span>
                                                         </button>
                                                         </div>
+
+                                                        <div className='Add_Cart'>
+                                                              <button className='Add_Cart_Btn_Shopp' onClick={(e) => {e.stopPropagation();
+                                                                      const song = Homesongs[index]; // Get the selected song from Homesongs array
+                                                                      addToCart(
+                                                                        user.id, 
+                                                                        song.songname, 
+                                                                        song.songdescription, 
+                                                                        song.songlicence, 
+                                                                        song.songprice, 
+                                                                        song.songimage, 
+                                                                        song.songpreview, 
+                                                                        song.songoriginal
+                                                                      );
+                                                                    }} title='Add To Cart' 
+                                                              ><i id="Fa-Shopping_BtnShp" className='fa fa-shopping-cart'></i>Add To Cart</button>
+                                                              </div>
+
                                                 </>):(<>
                                                   <div className='WhiseList_Song_List_Acc'> 
                                                     <button className='Icon_heart_Label_Acc' title='Add To Whiselist' onClick={(e) => {e.stopPropagation(); handleLoginClick();}} >
                                                         <i id="WhiseList_Song" className="fa fa-heart-o"></i>
                                                         <span className='Add_To_List_Acc' >Add To Whiselist</span>
+                                                      </button>
+                                                  </div>
+                                                  <div className='WhiseList_Song_List_Acc'> 
+                                                    <button className='Icon_heart_Label_Acc' title='Add To Whiselist' onClick={(e) => {e.stopPropagation(); handleLoginClick();}} >
+                                                        <i id="WhiseList_Song" className="fa fa-shopping-cart"></i>
+                                                        <span className='Add_To_List_Acc' >Add To Cart</span>
                                                       </button>
                                                   </div>
                                                   </>)}

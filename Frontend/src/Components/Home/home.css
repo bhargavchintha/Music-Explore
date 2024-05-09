@@ -61,7 +61,8 @@ div.Home_Page_Tittle{
   div.Songs_Upload:hover{
    transform: scale(1.2);
    box-shadow: 0 0 5px var(--box);
-   z-index: 99;
+   z-index: 99999;
+   /* background-color: #e9e7e7; */
  }
   div.Songs_View{
     width: 100%;
@@ -184,12 +185,17 @@ button.BTNs_Song_Play:focus{
    box-shadow:0 0 8px var(--000) ;
 }
 div.Details_SongsHome{
-  margin-top: 20px;
+  margin-top: 16px;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
   justify-content: space-between;
   grid-gap: 10px;
+}
+@media screen and (max-width:1000px) {
+  div.Details_SongsHome{
+    margin-top: 12px;
+  }
 }
 div.WhiseList_Song_List{
   display: flex;
@@ -215,12 +221,24 @@ button.Icon_heart{
   font-size: 30px;
   transition: all 0.3s ease-in-out;
   color: #e91e63;
+  transition: all 0.3s ease-in-out;
 }
 div.WhiseList_Song_List:hover #WhiseList_Song{
-  transform: scale(1.2);
+   animation: hoverwish 1.5s ease-in-out ;
+}
+@keyframes hoverwish {
+  0%, 20%, 50%, 80%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.1);
+  }
 }
 button.Add_Cart_Btn{
-  padding: 5px 10px;
+margin-right: 10px;
   font-size: 25px;
   outline: none;
   border: none;
@@ -232,7 +250,6 @@ button.Add_Cart_Btn{
 button.Add_Cart_Btn:hover{
   transform: scale(1.2);
 }
-
 
 
 /* Accordion style */
@@ -434,33 +451,80 @@ div.Price_Song_Acc{
 #Fa_Rupee_Acc{
   font-size: 15px;
 }
-button.Icon_heart_Label_Acc{
+div.Btn_Label_Cart{
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-}
-span.Add_To_List_Acc{
-  margin-left: 5px;
-}
-div.WhiseList_Song_List_Acc{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 button.Icon_heart_Label_Acc{
-  border: 1px solid var(--000);
-  outline: none;
-  border-radius: 5px;
-  padding: 6px 15px;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 18px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-  transition: all 0.3s ease-in-out;
+  padding: 8px 12px;
   color: var(--000);
+   background-color: var(--fff);
+   border: 1px solid var(--000);
+   border-radius: 5px;
+   cursor: pointer;
+   outline: none;
+   margin-right: 10px;
+   transition: all 0.3s ease-in-out;
+   font-size: 18px;
 }
-button.Icon_heart_Label_Acc:hover,
-button.Icon_heart_Label_Acc:focus{
-  background-color: var(--000);
+button.Icon_heart_Label_Acc:hover{
   color: var(--fff);
+  background-color: var(--000);
   border: 1px solid var(--fff);
 }
+#WhiseList_Song-sh{
+  color: #e91e63;
+  font-weight: 600;
+  margin-right: 3px;
+}
+button.Icon_heart_Label_Acc:hover #WhiseList_Song-sh{
+  animation: leftwishs 1.5s linear;
+}
+@keyframes leftwishs {
+  0%, 20%, 50%, 80%, 100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+}
+button.Add_Cart_Btn_Shopp{
+  padding: 8px 12px;
+  color: var(--fff);
+  background-color: var(--000);
+  border: 1px solid var(--fff);
+   border-radius: 5px;
+   cursor: pointer;
+   outline: none;
+   margin-right: 10px;
+   transition: all 0.3s ease-in-out;
+   font-size: 18px;
+}
+button.Add_Cart_Btn_Shopp:hover{
+  color: var(--000);
+   background-color: var(--fff);
+   border: 1px solid var(--000);
+}
+#Fa-Shopping_BtnShp{
+  color: #dc3545;
+  font-weight: 600;
+  margin-right: 5px;
+}
+button.Add_Cart_Btn_Shopp:hover #Fa-Shopping_BtnShp{
+  animation: cartSho 1.5s linear;
+  }
+  @keyframes cartSho {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translatex(-8px);
+    }
+    60% {
+      transform: translatex(-5px);
+    }
+  }

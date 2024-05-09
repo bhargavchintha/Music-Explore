@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link , useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './Whiselist.css';
 
-const wishlist = () => {
+const Wishlist = () => {
+  const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [wishlistsongs, setwishlistSongs] = useState([]);
-  const [Addwishlistsongs, setAddwishlistSongs] = useState([]);
   const [expandedIndexes, setExpandedIndexes] = useState([]);
   const [currentSongIndex, setCurrentSongIndex] = useState(null);
   const [audioPlayer, setAudioPlayer] = useState(null);
-
+  const [addToCartError, setAddToCartError] = useState('');
+  const [addToCartSuccess, setAddToCartSuccess] = useState('');
+  const [addDeleteToWishlistError, setDeleteAddToWishlistError] = useState('');
+  const [addDeleteToWishlistSuccess, setDeleteToWishlistSuccess] = useState('');
+  
   useEffect(() => {
     const fetchNavbarData = async () => {
       try {
@@ -26,9 +30,6 @@ const wishlist = () => {
 
     fetchNavbarData();
 
-    // const intervalId = setInterval(fetchNavbarData, 2500); 
-
-    // return () => clearInterval(intervalId);
   }, []);
 
   const [wishlistUpdated, setWishlistUpdated] = useState(false);
@@ -44,15 +45,37 @@ const wishlist = () => {
     };
   
     fetchomeSongs();
-    
-    // const intervalId = setInterval(fetchomeSongs, 1500); 
-  
-    // return () => clearInterval(intervalId);
   
   }, [wishlistUpdated]);
 
-  const [addDeleteToWishlistError, setDeleteAddToWishlistError] = useState('');
-  const [addDeleteToWishlistSuccess, setDeleteToWishlistSuccess] = useState('');
+  useEffect(() => {
+    if (audioPlayer) {
+      const handleEnded = () => {
+        setCurrentSongIndex(null);
+      };
+
+      audioPlayer.addEventListener('ended', handleEnded);
+
+      return () => {
+        audioPlayer.removeEventListener('ended', handleEnded);
+      };
+    }
+  }, [audioPlayer]);
+
+  const handlePlayButtonClick = (index) => {
+    setCurrentSongIndex(index);
+  };
+
+  const handleAudioRef = (element) => {
+    setAudioPlayer(element);
+  };
+
+  const toggleAccordion = (index) => {
+    const updatedIndexes = expandedIndexes.includes(index)
+      ? expandedIndexes.filter((idx) => idx !== index)
+      : [...expandedIndexes, index];
+    setExpandedIndexes(updatedIndexes);
+  };
   
   const songaddToWishlist = async (id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice) => {
     try {
@@ -83,39 +106,36 @@ const wishlist = () => {
     const timer = setTimeout(() => {
       setDeleteAddToWishlistError('');
       setDeleteToWishlistSuccess('');
+      setAddToCartError('');
+      setAddToCartSuccess('');
     }, 1300); 
 
     return () => clearTimeout(timer);
-  }, [addDeleteToWishlistError, addDeleteToWishlistSuccess]);
+  }, [addDeleteToWishlistError, addDeleteToWishlistSuccess, addToCartError, addToCartSuccess]);
 
-
-  useEffect(() => {
-    if (audioPlayer) {
-      const handleEnded = () => {
-        setCurrentSongIndex(null);
-      };
-
-      audioPlayer.addEventListener('ended', handleEnded);
-
-      return () => {
-        audioPlayer.removeEventListener('ended', handleEnded);
-      };
+  const addToCart = async (id, songname, songdescription, songlicence, songprice, songimage, songpreview, songoriginal) => {
+    try {
+      const response = await axios.post('/Add-To-Cart', { 
+        id, 
+        songname, 
+        songdescription, 
+        songlicence, 
+        songprice, 
+        songimage, 
+        songpreview, 
+        songoriginal 
+      });
+      //setAddToCartSuccess(`${songname} Song added to Cart`);
+      history.push('/Cart');
+      
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        setAddToCartError(`${songname} song is already in the Cart`);
+      } else {
+        console.error('Error adding song to Cart:', error);
+        // Handle other types of errors
+      }
     }
-  }, [audioPlayer]);
-
-  const handlePlayButtonClick = (index) => {
-    setCurrentSongIndex(index);
-  };
-
-  const handleAudioRef = (element) => {
-    setAudioPlayer(element);
-  };
-
-  const toggleAccordion = (index) => {
-    const updatedIndexes = expandedIndexes.includes(index)
-      ? expandedIndexes.filter((idx) => idx !== index)
-      : [...expandedIndexes, index];
-    setExpandedIndexes(updatedIndexes);
   };
 
   return (
@@ -127,6 +147,8 @@ const wishlist = () => {
                   <div className='Error_Msg_Call'>
                       {addDeleteToWishlistError && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addDeleteToWishlistError}</span></h1></div>}
                       {addDeleteToWishlistSuccess && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addDeleteToWishlistSuccess}</span></h1></div>}
+                      {addToCartError && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToCartError}</span></h1></div>}
+                      {addToCartSuccess && <div className="error_message"><h1 className='Error_Msg_Wishlist'><span className='Error_Success_Wishlist'>{addToCartSuccess}</span></h1></div>}
                   </div>
                 </div>
               <div className='Your_Whihlist_Names'>
@@ -166,7 +188,7 @@ const wishlist = () => {
                                   <div className='Width_Max-Wish'>
                                     <div className='Flex_Song_wishlist' title={wishlist.songname} >
                                       <div className='Song_wish_Name'>
-                                        <h1 className='wish_Song'>{wishlist.songname && wishlist.songname.length > 7 ? `${wishlist.songname.slice(0, 7)}...` : wishlist.songname}</h1>
+                                        <h1 className='wish_Song'>{wishlist.songname && wishlist.songname.length > 9 ? `${wishlist.songname.slice(0, 9)}` : wishlist.songname}</h1>
                                       </div>
                                     </div>
                                   </div>
@@ -181,8 +203,22 @@ const wishlist = () => {
                                 </div>
                                 <div className='Add_Cart_Wish'>
                                   <div className='Add_Cart_Page_List'>
-                                      {/* <button>Add Cart</button> */}
-                                      
+                                        <div className='Add_Cart_Pro_Btn'>
+                                          <button className='Add_Cart_Btn_Prog' onClick={(e) => {e.stopPropagation();
+                                                const wishlist = wishlistsongs[index]; // Get the selected song from Homesongs array
+                                                addToCart(
+                                                  user.id, 
+                                                  wishlist.songname, 
+                                                  wishlist.songdescription, 
+                                                  wishlist.songlicence, 
+                                                  wishlist.songprice, 
+                                                  wishlist.songimage, 
+                                                  wishlist.songpreview, 
+                                                  wishlist.songoriginal
+                                                );
+                                              }} title='Add To Cart' 
+                                            ><i id="Cart-Fa_Shop" className='fa fa-shopping-cart'></i>Add To Cart</button>
+                                        </div>
                                   </div>
                                 </div>
                               </div>
@@ -319,4 +355,4 @@ const wishlist = () => {
   );
 };
 
-export default wishlist;
+export default Wishlist;
