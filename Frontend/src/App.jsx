@@ -11,7 +11,8 @@ import Musicupload from './MusicUpload/Musicupload'
 import profile from './Userprofile/profile';
 import Uploadfiles from './Uploadfiles/Uploadfiles';
 import Whiselist from './Whiselist/Whiselist';
-import Cart from './AddToCart/Cart'
+import Cart from './AddToCart/Cart';
+import Checkout from './CheckOut/Checkout'
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,6 +21,7 @@ const App = () => {
       <Router>
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
         <Switch>
+        <Route exact path='/Checkout' component={Checkout}/>
         <Route exact path='/Cart' component={Cart}/>
       <Route exact path='/Whiselist' component={Whiselist}/>
         <Route path="/Uploadfiles" component={Uploadfiles} />  

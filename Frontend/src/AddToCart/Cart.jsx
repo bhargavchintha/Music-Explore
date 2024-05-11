@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link,useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import './Cart.css';
 
 const Cart = () => {
+  const history = useHistory();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [Cartsongs, setCartSongs] = useState([]);
@@ -116,6 +117,10 @@ const Cart = () => {
       ? expandedIndexes.filter((idx) => idx !== index)
       : [...expandedIndexes, index];
     setExpandedIndexes(updatedIndexes);
+  };
+  const handleClickcheckout = () => {
+    // Redirect to the checkout page
+    history.push('/Checkout');
   };
 
   return (
@@ -300,6 +305,9 @@ const Cart = () => {
       <div className='Total_Cart'>
           <div className='Total_Shop_Cart'>
                  <h2 className='Price_Tag_Cart' >Total Price:  <i id="Rupee_Price_C" className='fa fa-rupee'></i> {Cartsongs.reduce((total, Cart) => total + parseFloat(Cart.songprice), 0)}</h2>
+           </div>
+           <div className='Check_Out'>
+              <button className='Check_Out_btn' onClick={handleClickcheckout} >Check Out</button>
            </div>
       </div>
     </div>

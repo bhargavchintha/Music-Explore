@@ -489,6 +489,7 @@ button.Icon_heart_Label_Acc:hover{
   color: #e91e63;
   font-weight: 600;
   margin-right: 3px;
+  font-size: 20px;
 }
 button.Icon_heart_Label_Acc:hover #WhiseList_Song-sh{
   animation: leftwishs 1.5s linear;

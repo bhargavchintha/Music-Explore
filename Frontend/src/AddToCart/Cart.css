@@ -339,3 +339,27 @@ h2.Price_Tag_Cart{
 #Rupee_Price_C{
   font-size: 20px;
 }
+div.Total_Cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div.Check_Out{
+  margin-left: 20px
+}
+button.Check_Out_btn{
+  font-size: 18px;
+  border: 1px solid var(--000);
+  color: var(--000);
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--fff);
+  transition: all 0.3s ease-in-out;
+}
+button.Check_Out_btn:hover{
+  transform: scale(1.15);
+  background-color: var(--000);
+  color: var(--fff);
+  box-shadow: 0 0 5px var(--000);
+}
