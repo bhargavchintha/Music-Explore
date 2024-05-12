@@ -715,6 +715,52 @@ app.post('/Delete-Cart-song', (req, res) => {
 
 
 
+/*
+USAGE : To store song in  checkout page which user likes 
+URL :   http://localhost:3030/Add-To-Checkout
+Method : post
+Fields : id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice
+here image is optinal
+here order should be imp
+Add-To-Checkout End point url
+*/
+
+app.post('/Add-To-Checkout', (req, res) => {
+  const { id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice } = req.body;
+  
+  // Check if the song with the given songid exists in the cart
+  db.query('SELECT * FROM checkout WHERE id = ? AND songname = ? AND songdescription = ?  AND songimage = ? AND songpreview = ? AND songoriginal = ? AND songlicence = ? AND songprice = ? ', 
+  [id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice,], 
+  (err, rows) => {
+    if (err) {
+      console.error('Error checking song in checkout:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+
+    if (rows.length > 0) {
+      console.log('Song is already in the checkout');
+      return res.status(400).json({ error: 'Song is already in the checkout' });
+    }
+
+    // If a row with the given songid exists, the song is already in the wishlist
+    if (rows.length > 0) {
+      return res.status(400).json({ error: 'Song is already in the checkout' });
+    }
+
+    // If the song with the given songid doesn't exist, insert it into the wishlist
+    const querywishlist = `INSERT INTO checkout (id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+    db.query(querywishlist, [id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice], (err, result) => {
+      if (err) {
+        console.error('Error adding song to checkout:', err);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      console.log('Song added to checkout');
+      res.json({ success: true });
+    });
+  });
+});
+
+
 // Server Setup
 app.get('/', (req, res) => {
   res.send('Server is running on port 3030');

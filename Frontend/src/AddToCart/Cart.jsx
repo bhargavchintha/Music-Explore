@@ -118,9 +118,32 @@ const Cart = () => {
       : [...expandedIndexes, index];
     setExpandedIndexes(updatedIndexes);
   };
-  const handleClickcheckout = () => {
-    // Redirect to the checkout page
-    history.push('/Checkout');
+  // const handleClickcheckout = () => {
+  //   // Redirect to the checkout page
+  //   history.push('/Checkout');
+  // };
+
+
+  const addToCheckout = async () => {
+    try {
+     
+      for (const Cart of Cartsongs) {
+        await axios.post('/Add-To-Checkout', { 
+          id: user.id,
+          songname: Cart.songname,
+          songdescription: Cart.songdescription,
+          songlicence: Cart.songlicence,
+          songprice: Cart.songprice,
+          songimage: Cart.songimage,
+          songpreview: Cart.songpreview,
+          songoriginal: Cart.songoriginal 
+        });
+      }
+     
+      history.push('/Checkout');
+    } catch (error) {
+      console.error('Error adding songs to Checkout:', error);
+    }
   };
 
   return (
@@ -307,7 +330,7 @@ const Cart = () => {
                  <h2 className='Price_Tag_Cart' >Total Price:  <i id="Rupee_Price_C" className='fa fa-rupee'></i> {Cartsongs.reduce((total, Cart) => total + parseFloat(Cart.songprice), 0)}</h2>
            </div>
            <div className='Check_Out'>
-              <button className='Check_Out_btn' onClick={handleClickcheckout} >Check Out</button>
+              <button className='Check_Out_btn' onClick={addToCheckout} >Check Out</button>
            </div>
       </div>
     </div>
