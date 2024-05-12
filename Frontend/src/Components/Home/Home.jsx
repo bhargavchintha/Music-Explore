@@ -241,7 +241,8 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
                      </div>
                      </div>
                      <div className='Add_Cart'>
-                       <button className='Add_Cart_Btn' onClick={(e) => {e.stopPropagation();
+                      {isLoggedIn ? (<> 
+                      <button className='Add_Cart_Btn' onClick={(e) => {e.stopPropagation();
                               const song = Homesongs[index]; // Get the selected song from Homesongs array
                               addToCart(
                                 user.id, 
@@ -255,6 +256,9 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
                               );
                             }} title='Add To Cart' 
                        ><i className='fa fa-shopping-cart'></i></button>
+                       </>):(<>
+                        <button className='Add_Cart_Btn' onClick={(e) => {e.stopPropagation(); handleLoginClick();}} title='Add To Cart' ><i className='fa fa-shopping-cart'></i></button>
+                       </>)}
                       </div>
                   </div>
                 </div>

@@ -35,7 +35,7 @@ const Cart = () => {
   const [CartUpdated, setCartUpdated] = useState(false);
 
   useEffect(() => {
-    const fetchomeSongs = async () => {
+    const fetchcartSongs = async () => {
       try {
         const response = await axios.get('/Cart-songs');
         setCartSongs(response.data);
@@ -44,7 +44,7 @@ const Cart = () => {
       }
     };
   
-    fetchomeSongs();
+    fetchcartSongs();
     
     // const intervalId = setInterval(fetchomeSongs, 1500); 
   
@@ -139,7 +139,7 @@ const Cart = () => {
           songoriginal: Cart.songoriginal 
         });
       }
-     
+      
       history.push('/Checkout');
     } catch (error) {
       console.error('Error adding songs to Checkout:', error);
@@ -178,7 +178,7 @@ const Cart = () => {
                                                 Cart.songprice,
                                               );  e.stopPropagation();
                                           }} >
-                                        <i id="Fa_Remove_Cart_btn" class="fa fa-remove"></i>
+                                        <i id="Fa_Remove_Cart_btn" className="fa fa-remove"></i>
                                      </button>
                                 </div>
                             <div className='IMG_Cart_Flex_Len'>
@@ -302,7 +302,7 @@ const Cart = () => {
                           Add  some songs to your Cart!
                          </h2>
                          <p className='Click_Here'>
-                          <Link className="Home_Click" to='/Home'><button  className='Name_Btn_Home'><i id="Cart_Wish_home" className="fa fa-home" aria-hidden="true"></i>Home</button></Link>
+                          <Link className="Home_Click" to='/Home'><button  className='Name_Btn_Home'><i id="Cart_Wish_home" className="fa fa-home" aria-hidden="true"></i></button></Link>
                          </p>
                      </div>
                    </div>

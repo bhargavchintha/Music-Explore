@@ -726,39 +726,46 @@ Add-To-Checkout End point url
 */
 
 app.post('/Add-To-Checkout', (req, res) => {
-  const { id, songname, songdescription, songimage, songpreview, songoriginal,songlicence, songprice } = req.body;
-  
-  // Check if the song with the given songid exists in the cart
-  db.query('SELECT * FROM checkout WHERE id = ? AND songname = ? AND songdescription = ?  AND songimage = ? AND songpreview = ? AND songoriginal = ? AND songlicence = ? AND songprice = ? ', 
-  [id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice,], 
-  (err, rows) => {
+  const { id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice } = req.body;
+
+  // Check if the song with the given songid exists in the checkout
+  db.query('SELECT * FROM checkout WHERE id = ? AND songname = ? AND songdescription = ? AND songimage = ? AND songpreview = ? AND songoriginal = ?', [id, songname, songdescription, songimage, songpreview, songoriginal], (err, rows) => {
     if (err) {
       console.error('Error checking song in checkout:', err);
       return res.status(500).json({ error: 'Internal server error' });
     }
 
     if (rows.length > 0) {
-      console.log('Song is already in the checkout');
-      return res.status(400).json({ error: 'Song is already in the checkout' });
+      // Song already exists in the checkout, update it
+      const updateQuery = `UPDATE checkout 
+                           SET songdescription = ?, songimage = ?, songoriginal = ?, songlicence = ?, songprice = ?
+                           WHERE id = ? AND songname = ? AND songpreview = ?`;
+      const values = [songdescription, songimage, songoriginal, songlicence, songprice, id, songname, songpreview];
+      db.query(updateQuery, values, (updateErr, updateResult) => {
+        if (updateErr) {
+          console.error('Error updating song in checkout:', updateErr);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        console.log('Song updated in checkout');
+        res.json({ success: true });
+      });
+    } else {
+      // Song doesn't exist in the checkout, insert it
+      const insertQuery = `INSERT INTO checkout (id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+      const insertValues = [id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice];
+      db.query(insertQuery, insertValues, (insertErr, insertResult) => {
+        if (insertErr) {
+          console.error('Error adding song to checkout:', insertErr);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        console.log('Song added to checkout');
+        res.json({ success: true });
+      });
     }
-
-    // If a row with the given songid exists, the song is already in the wishlist
-    if (rows.length > 0) {
-      return res.status(400).json({ error: 'Song is already in the checkout' });
-    }
-
-    // If the song with the given songid doesn't exist, insert it into the wishlist
-    const querywishlist = `INSERT INTO checkout (id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-    db.query(querywishlist, [id, songname, songdescription, songimage, songpreview, songoriginal, songlicence, songprice], (err, result) => {
-      if (err) {
-        console.error('Error adding song to checkout:', err);
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-      console.log('Song added to checkout');
-      res.json({ success: true });
-    });
   });
 });
+
+
 
 
 // Server Setup
