@@ -22,6 +22,7 @@ div.Your_Cart_Names{
     width: 80%;
     margin: auto;
     justify-content: center;
+    margin-top: 1px;
   }
 }
 @media screen and (max-width:800px) {
