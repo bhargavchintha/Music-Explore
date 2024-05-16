@@ -43,7 +43,7 @@ div.Home_Page_Tittle{
     background-color: var(--fgj);
     cursor: pointer;
   }
-  @media screen and (max-width:1050px) {
+  @media screen and (max-width:1100px) {
     div.Songs_Upload{
       width: 200px;
     }
@@ -279,7 +279,12 @@ div.According_Details{
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1200px) {
+  div.According_Details{
+    width: 60%;
+  }
+}
+@media screen and (max-width:1100px) {
   div.According_Details{
     width: 70%;
   }
@@ -541,3 +546,25 @@ button.Add_Cart_Btn_Shopp:hover #Fa-Shopping_BtnShp{
       transform: translatex(-5px);
     }
   }
+
+
+
+
+  /* MusicPlayer.css */
+
+.Song_Player {
+  text-align: center;
+}
+
+.Song_Name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  margin-bottom: 10px;
+}
+
+.Song_Audio {
+  display: none; /* Hide default audio element */
+}

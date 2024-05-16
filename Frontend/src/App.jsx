@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Signup from './Login&Signup/Signup';
 import Login from './Login&Signup/Login';
 import Home from './Components/Home/Home';
-import Search from './Components/Search';
+import Search from './Components/Search/Search';
 import About from './Components/About';
 import Model from './Components/Model';
 import Musicupload from './MusicUpload/Musicupload'

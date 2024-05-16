@@ -141,11 +141,11 @@ const Uploadfiles = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className='Accordions_Home'>
+                            <div className='Accordions_Home' onClick={() => toggleAccordion(index)} >
                                 {expandedIndexes.includes(index) && (
                                   <>
                                   <div className='Accordion_Content'>
-                                    <div className='According_Details'>
+                                    <div className='According_Details'  onClick={(e) => e.stopPropagation()} >
                                       {/* <div className='Img-According_Panal'>
                                         <div className='Panal_Acc_Img'>
                                         {song.songimage ? (
@@ -168,7 +168,7 @@ const Uploadfiles = () => {
                                         </div>
                                       </div> */}
                                       <div className='According_Song_View'>
-                                        <div className='Close_Button_Acc'>
+                                        <div className='Close_Button_Acc' >
                                           <button className='Btn_Close_Acc' onClick={() => toggleAccordion(index)}>
                                             <i id='Fa_Times_Acc' className='fa fa-times'></i>
                                           </button>

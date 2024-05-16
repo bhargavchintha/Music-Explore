@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {useHistory,Link } from 'react-router-dom';
 import axios from 'axios';
 import './home.css';
@@ -8,6 +8,10 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
  const history = useHistory();
+ const [Homesongs, setHomesongs] = useState([]);
+  const [currentSongIndex, setCurrentSongIndex] = useState(null);
+  const [audioPlayer, setAudioPlayer] = useState(null);
+  const [expandedIndexes, setExpandedIndexes] = useState([]);
 
  useEffect(() => {
   const fetchNavbarData = () => {
@@ -28,12 +32,6 @@ const Home = () => {
   // return () => clearInterval(intervalId);
  
 }, []);
-
-
-  const [Homesongs, setHomesongs] = useState([]);
-  const [currentSongIndex, setCurrentSongIndex] = useState(null);
-  const [audioPlayer, setAudioPlayer] = useState(null);
-  const [expandedIndexes, setExpandedIndexes] = useState([]);
 
   useEffect(() => {
     const fetchHomeSongs = async () => {
@@ -145,7 +143,62 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
 
     return () => clearTimeout(timer);
   }, [addToWishlistError, addToWishlistSuccess, addToCartError, addToCartSuccess]);
+
   
+  
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [currentTime, setCurrentTime] = useState(0);
+const [duration, setDuration] = useState(0);
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
+
+  const increaseVolume = () => {
+    const newVolume = Math.min(volume + 0.1, 1); 
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+  
+  const decreaseVolume = () => {
+    const newVolume = Math.max(volume - 0.1, 0); 
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+  
+
+  const toggleMute = () => {
+    if (audioRef.current.volume === 0) {
+      // Unmute
+      audioRef.current.volume = volume === 0 ? 0.5 : volume; 
+      setVolume(volume === 0 ? 0.5 : volume); 
+    } else {
+      // Mute
+      audioRef.current.volume = 0;
+      setVolume(0);
+    }
+  };
+  
+  const handleLoadedMetadata = () => {
+    setDuration(audioRef.current.duration);
+  };
+  
+  const handleTimeUpdate = () => {
+    setCurrentTime(audioRef.current.currentTime);
+  };
+  
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
 
   return (
     <>
@@ -262,7 +315,7 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
             <div className='Accordions_Home' onClick={() => toggleAccordion(index)} >
             {expandedIndexes.includes(index) && (
               <div className='Accordion_Content' >
-                  <div className='According_Details'>
+                  <div className='According_Details' onClick={(e) => e.stopPropagation()} >
                      <div className='According_Song_View'>
                         <div className="Close_Button_Acc">
                             <button className='Btn_Close_Acc' onClick={() => toggleAccordion(index)} ><i id="Fa_Times_Acc" className='fa fa-times'></i></button>
@@ -378,17 +431,48 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
         </div>
       </div>
     </div>
-{currentSongIndex !== null && (
+    {currentSongIndex !== null && (
   <div className='Song_Player'>
     <div className='Song_Music_Player'>
-      <p className='Song_Name_S'>{Homesongs[currentSongIndex].songname}</p>
+      <p className='Song_Name'>{Homesongs[currentSongIndex].songname}</p>
+      <div className='controls'>
+        <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <button onClick={increaseVolume}>Increase Volume</button>
+        <button onClick={decreaseVolume}>Decrease Volume</button>
+        <button onClick={toggleMute}>{volume === 0 ? 'Unmute' : 'Mute'}</button>
+      </div>
+      <div className="song-duration">
+        <span>{formatTime(currentTime)}</span>
+        <input
+          type="range"
+          value={currentTime}
+          max={duration}
+          onChange={(e) => setCurrentTime(e.target.value)}
+        />
+        <span>{formatTime(duration)}</span>
+      </div>
+      <div className="volume-control">
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={volume}
+          onChange={(e) => {
+            setVolume(parseFloat(e.target.value));
+            audioRef.current.volume = parseFloat(e.target.value);
+          }}
+        />
+      </div>
       <audio
-        key={`audio_${currentSongIndex}`}
-        id={`audio_${currentSongIndex}`}
-        className='Song_Audio_preview'
-        controls
-        controlsList='nodownload'
+        ref={audioRef}
+        className='Song_Audio'
         autoPlay
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onLoadedMetadata={handleLoadedMetadata}
+        onTimeUpdate={handleTimeUpdate}
+        controls={false} // Disable default controls
       >
         <source src={`songfilesupload/preview/${Homesongs[currentSongIndex].songpreview}`} />
         Your browser does not support the audio element.
@@ -396,8 +480,8 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
     </div>
   </div>
 )}
-{/* <div className="Close_Button" onClick={() => toggleAccordion(index)}>Close</div> */}
-                {/* {song.songname} */}
+
+
     </>
   );
 };

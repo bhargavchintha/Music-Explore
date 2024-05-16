@@ -31,7 +31,7 @@ const SearchPage = ({ searchQuery }) => {
   return (
     <div className='Search' >
       
-<title>Search bar</title>
+<title>Search Page | Music Explore</title>
 
       {error && <div className="error"> {searchQuery} No Result Found</div>}
       <div className="search-results">
@@ -40,7 +40,6 @@ const SearchPage = ({ searchQuery }) => {
           <div key={search.songid}>
             <h3>{search.songname}</h3>
            
-            {/* Render other song details as needed */}
           </div>
         ))}
 

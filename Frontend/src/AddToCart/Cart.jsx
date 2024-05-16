@@ -214,11 +214,11 @@ const Cart = () => {
                          </div>
                       </div>
 
-                      <div className='Accordions_Home'>
+                      <div className='Accordions_Home' onClick={() => toggleAccordion(index)} >
                                 {expandedIndexes.includes(index) && (
                                   <>
                                   <div className='Accordion_Content'>
-                                    <div className='According_Details'>
+                                    <div className='According_Details'  onClick={(e) => e.stopPropagation()} >
                                       <div className='According_Song_View'>
                                         <div className='Close_Button_Acc'>
                                           <button className='Btn_Close_Acc' onClick={() => toggleAccordion(index)}>
