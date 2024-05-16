@@ -767,6 +767,34 @@ app.post('/Add-To-Checkout', (req, res) => {
 
 
 
+app.get('/buyedsongs', (req, res) => {
+  if (!req.session.user || !req.session.user.id) {
+    return res.status(401).json({ error: 'User session not found or missing user id' });
+  }
+  const userId = req.session.user.id; 
+ 
+  const sql = `
+    SELECT *
+    FROM purchasedsongs
+    WHERE id = ?
+  `;
+
+  // Execute the SQL query
+  db.query(sql, [userId], (err, result) => {
+    if (err) {
+    //  console.log(sql);
+    //  console.log(userId);
+      //console.log(result);
+      console.error('Error retrieving songs from database:', err);
+      return res.status(500).json({ error: 'An error occurred while retrieving songs' });
+    }
+  //  console.log(sql);
+   // console.log(userId);
+    //console.log(result);
+    res.status(200).json(result);
+  });
+});
+
 
 // Server Setup
 app.get('/', (req, res) => {

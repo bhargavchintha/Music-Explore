@@ -92,22 +92,31 @@ const handleLogout = () => {
     .catch(error => console.error('Error logging out:', error));
 };
 
-  const [isVisible, setIsVisible] = useState(false);
+const [isVisible, setIsVisible] = useState(localStorage.getItem('isVisible') === 'true');
 
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
+const toggleVisibility = () => {
+  setIsVisible(!isVisible);
+};
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (!event.target.closest('.Head_Profile')) {
+      setIsVisible(false);
+      localStorage.setItem('isVisible', 'false');
+    }
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!event.target.closest('.Head_Profile')) {
-       
-      }
-    };
+  document.addEventListener('click', handleClickOutside);
 
-    document.addEventListener('click', handleClickOutside);
+  return () => {
+    document.removeEventListener('click', handleClickOutside);
+  };
+}, []); 
 
-  }, []);
+useEffect(() => {
+  localStorage.setItem('isVisible', isVisible.toString());
+}, [isVisible]);
+
 
 
   const truncateName = (name, maxLength) => {

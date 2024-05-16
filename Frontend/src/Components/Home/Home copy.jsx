@@ -48,6 +48,11 @@ const Home = () => {
     fetchHomeSongs();
 
     
+    const storedExpandedIndexes = JSON.parse(localStorage.getItem('expandedIndexes'));
+    if (storedExpandedIndexes) {
+      setExpandedIndexes(storedExpandedIndexes);
+    }
+    
     const intervalId = setInterval(fetchHomeSongs, 1500); 
 
     return () => clearInterval(intervalId);
@@ -259,7 +264,7 @@ const [addToWishlistSuccess, setAddToWishlistSuccess] = useState('');
                 </div>
               </div>
             </div>
-            <div className='Accordions_Home' onClick={() => toggleAccordion(index)} >
+            <div className='Accordions_Home'>
             {expandedIndexes.includes(index) && (
               <div className='Accordion_Content' >
                   <div className='According_Details'>
