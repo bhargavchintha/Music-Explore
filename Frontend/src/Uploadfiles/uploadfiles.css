@@ -167,24 +167,7 @@ p.Song_Des{
     color: var(--000);
     transition: all 0.3s ease-in-out;
 }
-div.Song_Player{
-    position: fixed;
-    background-color: var(--ccc);
-    width: 100%;
-    height: auto;
-    z-index: 99999999;
-    bottom: 0;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 0 8px var(--box);
-}
-div.Center_Songs{
-width: 60%;
-position: absolute;
-justify-content: center;
-display: flex;
-}
+
 p.No_Files{
     color: var(--000);
     font-size: 25px;

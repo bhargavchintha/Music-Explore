@@ -33,6 +33,6 @@ and here
 
 
 
-songplayer css in uploadfiles.css
+songplayer css in Music.css in public
 
       

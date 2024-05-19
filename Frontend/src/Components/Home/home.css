@@ -552,19 +552,6 @@ button.Add_Cart_Btn_Shopp:hover #Fa-Shopping_BtnShp{
 
   /* MusicPlayer.css */
 
-.Song_Player {
-  text-align: center;
-}
-
-.Song_Name {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.controls {
-  margin-bottom: 10px;
-}
-
 .Song_Audio {
   display: none; /* Hide default audio element */
 }

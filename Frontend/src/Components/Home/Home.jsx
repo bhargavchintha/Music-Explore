@@ -200,6 +200,49 @@ const [duration, setDuration] = useState(0);
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
 
+  useEffect(() => {
+    if (currentSongIndex !== null && audioRef.current) {
+      const song = Homesongs[currentSongIndex];
+      audioRef.current.src = `songfilesupload/preview/${song.songpreview}`;
+      audioRef.current.load();
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  }, [currentSongIndex]);
+
+
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        let newTime = currentTime - 2;
+        if (newTime < 0) newTime = 0;
+        audioRef.current.currentTime = newTime;
+        setCurrentTime(newTime);
+      } else if (e.key === 'ArrowRight') {
+        let newTime = currentTime + 2;
+        if (newTime > duration) newTime = duration;
+        audioRef.current.currentTime = newTime;
+        setCurrentTime(newTime);
+      } else if (e.code === 'Space') {
+        e.preventDefault(); // Prevent default space bar action (e.g., page scrolling)
+        togglePlay();
+      } else if (e.key === 'ArrowUp') {
+        increaseVolume();
+      } else if (e.key === 'ArrowDown') {
+        decreaseVolume();
+      } else if (e.key.toLowerCase() === 'm') {
+        toggleMute();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentTime, duration, volume, isPlaying]);
+
   return (
     <>
     <div className='Home_Page_Tittle'>
@@ -435,11 +478,25 @@ const [duration, setDuration] = useState(0);
   <div className='Song_Player'>
     <div className='Song_Music_Player'>
       <p className='Song_Name'>{Homesongs[currentSongIndex].songname}</p>
+      {Homesongs[currentSongIndex].songimage ? (
+        <img 
+          src={`songfilesupload/images/${Homesongs[currentSongIndex].songimage}`} 
+          alt={Homesongs[currentSongIndex].songname} 
+          className='Song_Image'
+        />
+      ) : (
+        <p>No Image Available</p> // or whatever placeholder text or element you want
+      )}
       <div className='controls'>
-        <button onClick={togglePlay}>{isPlaying ? 'Pause' : 'Play'}</button>
+        <button onClick={togglePlay}>
+          <i className={`fa ${isPlaying ? 'fa-pause' : 'fa-play'}`} aria-hidden="true"></i>
+        </button>
         <button onClick={increaseVolume}>Increase Volume</button>
         <button onClick={decreaseVolume}>Decrease Volume</button>
-        <button onClick={toggleMute}>{volume === 0 ? 'Unmute' : 'Mute'}</button>
+        <button onClick={() => {
+          setVolume(volume === 0 ? 1 : 0);
+          audioRef.current.volume = volume === 0 ? 1 : 0;
+        }}>{volume === 0 ? 'Unmute' : 'Mute'}</button>
       </div>
       <div className="song-duration">
         <span>{formatTime(currentTime)}</span>
@@ -447,7 +504,11 @@ const [duration, setDuration] = useState(0);
           type="range"
           value={currentTime}
           max={duration}
-          onChange={(e) => setCurrentTime(e.target.value)}
+          onChange={(e) => {
+            const newTime = parseFloat(e.target.value);
+            audioRef.current.currentTime = newTime;
+            setCurrentTime(newTime);
+          }}
         />
         <span>{formatTime(duration)}</span>
       </div>
@@ -472,7 +533,7 @@ const [duration, setDuration] = useState(0);
         onPause={() => setIsPlaying(false)}
         onLoadedMetadata={handleLoadedMetadata}
         onTimeUpdate={handleTimeUpdate}
-        controls={false} // Disable default controls
+        controls={false}
       >
         <source src={`songfilesupload/preview/${Homesongs[currentSongIndex].songpreview}`} />
         Your browser does not support the audio element.

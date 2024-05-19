@@ -1,0 +1,19 @@
+.dark-side{
+  --ccb:#ccccccf3;
+}
+body{
+    --ccb:#cccccc05;
+}
+div.Song_Player{
+    position: fixed;
+    background-color: var(--ccb);
+    width: 100%;
+    height: auto;
+    z-index: 99999999;
+    bottom: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 8px var(--box);
+}
+
