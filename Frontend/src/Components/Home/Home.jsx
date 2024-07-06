@@ -477,67 +477,87 @@ const [duration, setDuration] = useState(0);
     {currentSongIndex !== null && (
   <div className='Song_Player'>
     <div className='Song_Music_Player'>
-      <p className='Song_Name'>{Homesongs[currentSongIndex].songname}</p>
-      {Homesongs[currentSongIndex].songimage ? (
-        <img 
-          src={`songfilesupload/images/${Homesongs[currentSongIndex].songimage}`} 
-          alt={Homesongs[currentSongIndex].songname} 
-          className='Song_Image'
-        />
-      ) : (
-        <p>No Image Available</p> // or whatever placeholder text or element you want
-      )}
-      <div className='controls'>
-        <button onClick={togglePlay}>
-          <i className={`fa ${isPlaying ? 'fa-pause' : 'fa-play'}`} aria-hidden="true"></i>
-        </button>
-        <button onClick={increaseVolume}>Increase Volume</button>
-        <button onClick={decreaseVolume}>Decrease Volume</button>
-        <button onClick={() => {
-          setVolume(volume === 0 ? 1 : 0);
-          audioRef.current.volume = volume === 0 ? 1 : 0;
-        }}>{volume === 0 ? 'Unmute' : 'Mute'}</button>
+      <div className='Song_Music_Player_V'>
+            <div className='Image_Song_View'>
+                {Homesongs[currentSongIndex].songimage ? (
+                  <img 
+                    src={`songfilesupload/images/${Homesongs[currentSongIndex].songimage}`} 
+                    alt={Homesongs[currentSongIndex].songname} 
+                    className='Song_Image_View' title={Homesongs[currentSongIndex].songname}
+                  />
+                ) : (
+                  <>
+                  <div className='No_Song_Image'>
+                     <div className='No_Song_Img'>
+                          <p className='Song_Name_Dis' title={Homesongs[currentSongIndex].songname} >{Homesongs[currentSongIndex].songname}</p>
+                     </div>
+                  </div>
+                  {/* <p>No Image Available</p> // or whatever placeholder text or element you want */}
+                </>
+                )}
+            </div>
+            <div className='Name_Song_View'>
+              <p className='Song_Name' title={Homesongs[currentSongIndex].songname} >{Homesongs[currentSongIndex].songname}</p>
+            </div>
+
+            <div className='Play_Line_Song'>
+              <div className='Play_Line_Song_View'>
+
+              </div>
+            </div>
+
+            <div className='controls'>
+              <button onClick={togglePlay}>
+                <i className={`fa ${isPlaying ? 'fa-pause' : 'fa-play'}`} aria-hidden="true"></i>
+              </button>
+              <button onClick={increaseVolume}>Increase Volume</button>
+              <button onClick={decreaseVolume}>Decrease Volume</button>
+              <button onClick={() => {
+                setVolume(volume === 0 ? 1 : 0);
+                audioRef.current.volume = volume === 0 ? 1 : 0;
+              }}>{volume === 0 ? 'Unmute' : 'Mute'}</button>
+            </div>
+            <div className="song-duration">
+              <span>{formatTime(currentTime)}</span>
+              <input
+                type="range"
+                value={currentTime}
+                max={duration}
+                onChange={(e) => {
+                  const newTime = parseFloat(e.target.value);
+                  audioRef.current.currentTime = newTime;
+                  setCurrentTime(newTime);
+                }}
+              />
+              <span>{formatTime(duration)}</span>
+            </div>
+            <div className="volume-control">
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={volume}
+                onChange={(e) => {
+                  setVolume(parseFloat(e.target.value));
+                  audioRef.current.volume = parseFloat(e.target.value);
+                }}
+              />
+            </div>
+            <audio
+              ref={audioRef}
+              className='Song_Audio'
+              autoPlay
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onLoadedMetadata={handleLoadedMetadata}
+              onTimeUpdate={handleTimeUpdate}
+              controls={false}
+            >
+              <source src={`songfilesupload/preview/${Homesongs[currentSongIndex].songpreview}`} />
+              Your browser does not support the audio element.
+            </audio>
       </div>
-      <div className="song-duration">
-        <span>{formatTime(currentTime)}</span>
-        <input
-          type="range"
-          value={currentTime}
-          max={duration}
-          onChange={(e) => {
-            const newTime = parseFloat(e.target.value);
-            audioRef.current.currentTime = newTime;
-            setCurrentTime(newTime);
-          }}
-        />
-        <span>{formatTime(duration)}</span>
-      </div>
-      <div className="volume-control">
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.1"
-          value={volume}
-          onChange={(e) => {
-            setVolume(parseFloat(e.target.value));
-            audioRef.current.volume = parseFloat(e.target.value);
-          }}
-        />
-      </div>
-      <audio
-        ref={audioRef}
-        className='Song_Audio'
-        autoPlay
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-        onLoadedMetadata={handleLoadedMetadata}
-        onTimeUpdate={handleTimeUpdate}
-        controls={false}
-      >
-        <source src={`songfilesupload/preview/${Homesongs[currentSongIndex].songpreview}`} />
-        Your browser does not support the audio element.
-      </audio>
     </div>
   </div>
 )}
